@@ -1,0 +1,11 @@
+{
+  "name": "mobile-webview-builder",
+  "account_id": "fa9f1ebc0ff620bce31e3c3f54b19cb4",
+  "compatibility_date": "2026-10-27",
+  "workers_dev": true,
+  "preview_urls": false,
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  }
+}

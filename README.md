@@ -8,6 +8,20 @@ This is a local prototype using public Lit/Lion packages and sample data. The in
 adapter is disabled until you configure it. No private ING packages, backend account, API key,
 or native mobile app are required to run the included examples.
 
+## Hosted demo
+
+[Open Mobile Webview Builder](https://mobile-webview-builder.frostorygon.workers.dev).
+
+The hosted demo starts with five built-in sample screens. Compose and edit screens, reuse blocks,
+change the theme, preview navigation, and download source, theme, or project JSON.
+
+Projects autosave in the current browser on the current device. Download **Project JSON** from
+**Export** to keep a backup or move work to another browser, then use **Import project** to reopen it.
+Clearing browser storage removes the local saved project.
+
+For a complete compiled export with bundled component dependencies, run the builder locally and use
+**Write all screens to repo**. Downloaded Lit/HTML source is intended for use with that local project.
+
 ## Presentation
 
 See [the short PDF presentation](output/pdf/mobile-webview-builder.pdf) for an overview of
@@ -227,3 +241,14 @@ test/              vitest: tree ops, manifest import, blocks, codegen
 ## Scripts
 
 `npm run dev` · `npm test` · `npm run typecheck` · `npm run build` (static build, browser storage only)
+
+## Deploy to Cloudflare
+
+From this folder, using an authorized Cloudflare login:
+
+```sh
+npm run build
+npx wrangler@4.131.0 deploy --config wrangler.jsonc
+```
+
+The production build serves static assets without a backend or shared project database.

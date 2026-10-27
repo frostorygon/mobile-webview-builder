@@ -188,15 +188,18 @@ class Store {
 
   async load(seed: () => Project): Promise<void> {
     let project: Project | null = null;
-    try {
-      const res = await fetch(API, { cache: 'no-store' });
-      if (res.ok) {
-        this.serverAvailable = true;
-        const text = await res.text();
-        if (text.trim()) project = JSON.parse(text);
+    this.serverAvailable = false;
+    if (import.meta.env.DEV) {
+      try {
+        const res = await fetch(API, { cache: 'no-store' });
+        if (res.ok && res.headers.get('content-type')?.split(';')[0].trim() === 'application/json') {
+          const text = await res.text();
+          if (text.trim()) project = JSON.parse(text);
+          this.serverAvailable = true;
+        }
+      } catch {
+        /* no local repo storage */
       }
-    } catch {
-      /* static hosting: no repo storage */
     }
     if (!project) {
       try {

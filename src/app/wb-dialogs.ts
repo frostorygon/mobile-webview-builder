@@ -499,12 +499,16 @@ export class WbDialogs extends LitElement {
         <pre>${file.content}</pre>
         <p class="desc" style="font-size:12px">
           ${this.format === 'lit'
-            ? html`Lit source for this repo. <b>Write all screens to repo</b> also produces compiled screens with their local dependencies included.`
+            ? store.hasRepoStorage
+              ? html`Lit source for this repo. <b>Write all screens to repo</b> also produces compiled screens with their local dependencies included.`
+              : 'Editable Lit source for use with the local project. Run the builder locally to compile screens with their component dependencies.'
             : this.format === 'json'
               ? 'The whole project: screens, blocks and theme. Commit it, share it or import it elsewhere.'
               : this.format === 'theme'
                 ? 'Design tokens used by the components. Load once per webview.'
-                : 'Use with the files produced by Write all screens to repo. Open the HTML pages through a local web server.'}
+                : store.hasRepoStorage
+                  ? 'Use with the files produced by Write all screens to repo. Open the HTML pages through a local web server.'
+                  : 'HTML source for use with the local project and its theme and component dependencies. Use the local builder for a complete compiled export.'}
         </p>`,
       html`<button class="btn" @click=${() => this.importJson()}>${icon('upload', 14)} Import project…</button>
         <span style="flex:1"></span>
