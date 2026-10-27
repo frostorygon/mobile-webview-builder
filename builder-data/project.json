@@ -1,0 +1,685 @@
+{
+ "version": 1,
+ "name": "Mobile webviews",
+ "theme": {
+  "preset": "ink",
+  "colorPrimary": "#111827",
+  "colorOnPrimary": "#FFFFFF",
+  "colorAccent": "#5B4FCF",
+  "colorText": "#111827",
+  "colorTextMuted": "#6B7280",
+  "colorSurface": "#FFFFFF",
+  "colorSurfaceSubtle": "#F3F4F6",
+  "colorBorder": "#E5E7EB",
+  "colorSuccess": "#349651",
+  "colorWarning": "#D98A00",
+  "colorError": "#D70000",
+  "radius": 12,
+  "fontFamily": "system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+  "fontScale": 1
+ },
+ "screens": [
+  {
+   "id": "sr6j9ibhri",
+   "name": "Software update",
+   "settings": {
+    "title": "Software Update",
+    "navBar": "web",
+    "leading": "close",
+    "trailing": "none",
+    "background": "default",
+    "bodyAlign": "center"
+   },
+   "body": [
+    {
+     "id": "nr6j9icrid",
+     "type": "@block",
+     "props": {
+      "blockId": "br6j9h1fdv"
+     },
+     "overrides": {
+      "nr6j9h2wkt": {
+       "icon": "download",
+       "tone": "accent"
+      },
+      "nr6j9h30vw": {
+       "text": "Pro Camera"
+      },
+      "nr6j9h4g90": {
+       "text": "Version v3.2 available"
+      }
+     }
+    },
+    {
+     "id": "nrfwmh3vjh",
+     "type": "@block",
+     "props": {
+      "blockId": "brfwmh1qp0",
+      "$grow": null,
+      "$align": null
+     },
+     "overrides": {},
+     "link": null
+    },
+    {
+     "id": "nriweg248a",
+     "type": "remote-rimn11js0/sl-button",
+     "props": {
+      "text": "Button",
+      "title": "",
+      "variant": "default",
+      "size": "medium",
+      "caret": false,
+      "disabled": false,
+      "loading": false,
+      "outline": false,
+      "pill": false,
+      "circle": false,
+      "type": "button",
+      "name": "",
+      "value": "",
+      "href": "",
+      "rel": "noreferrer noopener"
+     }
+    },
+    {
+     "id": "nriweg37hr",
+     "type": "remote-rimn11js0/sl-alert",
+     "props": {
+      "text": "Alert",
+      "open": false,
+      "closable": false,
+      "variant": "primary"
+     }
+    },
+    {
+     "id": "nriweg4y32",
+     "type": "remote-rimn11js0/sl-rating",
+     "props": {
+      "label": "",
+      "value": 0,
+      "max": 5,
+      "precision": 1,
+      "readonly": false,
+      "disabled": false
+     }
+    },
+    {
+     "id": "nriweg5ai3",
+     "type": "remote-rimn11js0/sl-switch",
+     "props": {
+      "text": "Switch",
+      "title": "",
+      "name": "",
+      "size": "medium",
+      "disabled": false,
+      "checked": false,
+      "form": "",
+      "required": false,
+      "help-text": ""
+     }
+    },
+    {
+     "id": "nrpct41hky",
+     "type": "lion/lion-input-stepper",
+     "props": {
+      "label": "Quantity",
+      "step": 1,
+      "disabled": false
+     }
+    }
+   ],
+   "footer": [
+    {
+     "id": "nr6j9ielsl",
+     "type": "kit/button",
+     "props": {
+      "label": "Update now",
+      "variant": "primary",
+      "block": true,
+      "icon": "",
+      "disabled": false
+     }
+    }
+   ]
+  },
+  {
+   "id": "sr6j9ha0rz",
+   "name": "Transfer review",
+   "settings": {
+    "title": "Review transfer",
+    "navBar": "native",
+    "leading": "back",
+    "trailing": "none",
+    "background": "default",
+    "bodyAlign": "start"
+   },
+   "body": [
+    {
+     "id": "nr6j9ifxtd",
+     "type": "kit/amount",
+     "props": {
+      "amount": 250,
+      "currency": "EUR",
+      "label": "You are sending",
+      "size": "xl",
+      "tone": "default",
+      "align": "center"
+     }
+    },
+    {
+     "id": "nr6j9ijbzj",
+     "type": "layout/card",
+     "props": {
+      "surface": "outlined",
+      "gap": "none",
+      "padding": "m",
+      "align": "stretch"
+     },
+     "slots": {
+      "default": [
+       {
+        "id": "nr6j9igshh",
+        "type": "kit/list-item",
+        "props": {
+         "heading": "To",
+         "subtitle": "J. de Vries · NL00 BANK 0987 6543 21",
+         "icon": "",
+         "trailing": "none",
+         "value": "",
+         "checked": false,
+         "divider": true
+        }
+       },
+       {
+        "id": "nr6j9ihun4",
+        "type": "kit/list-item",
+        "props": {
+         "heading": "From",
+         "subtitle": "Current account",
+         "icon": "",
+         "trailing": "none",
+         "value": "",
+         "checked": false,
+         "divider": true
+        }
+       },
+       {
+        "id": "nr6j9iircu",
+        "type": "kit/list-item",
+        "props": {
+         "heading": "Description",
+         "subtitle": "Dinner",
+         "icon": "",
+         "trailing": "none",
+         "value": "",
+         "checked": false,
+         "divider": false
+        }
+       }
+      ]
+     }
+    },
+    {
+     "id": "nr6j9iku1c",
+     "type": "kit/note",
+     "props": {
+      "text": "The money arrives within a few seconds.",
+      "heading": "",
+      "tone": "info",
+      "icon": true,
+      "align": "start"
+     }
+    }
+   ],
+   "footer": [
+    {
+     "id": "nr6j9il68l",
+     "type": "kit/button",
+     "props": {
+      "label": "Confirm transfer",
+      "variant": "primary",
+      "block": true,
+      "icon": "",
+      "disabled": false
+     },
+     "link": "sr6j9h9pwg"
+    },
+    {
+     "id": "nr6j9imbxd",
+     "type": "kit/button",
+     "props": {
+      "label": "Cancel",
+      "variant": "link",
+      "block": true,
+      "icon": "",
+      "disabled": false
+     }
+    }
+   ]
+  },
+  {
+   "id": "sr6j9h9pwg",
+   "name": "Transfer sent",
+   "settings": {
+    "title": "",
+    "navBar": "native",
+    "leading": "none",
+    "trailing": "close",
+    "background": "default",
+    "bodyAlign": "center"
+   },
+   "body": [
+    {
+     "id": "nr6j9inin4",
+     "type": "@block",
+     "props": {
+      "blockId": "br6j9h1fdv"
+     },
+     "overrides": {
+      "nr6j9h2wkt": {
+       "icon": "circle-check",
+       "tone": "success"
+      },
+      "nr6j9h30vw": {
+       "text": "Money sent"
+      },
+      "nr6j9h4g90": {
+       "text": "€ 250,00 is on its way to J. de Vries."
+      }
+     }
+    },
+    {
+     "id": "nr6j9io73v",
+     "type": "@block",
+     "props": {
+      "blockId": "br6j9h7b4i"
+     },
+     "overrides": {}
+    }
+   ],
+   "footer": [
+    {
+     "id": "nr6j9ipzfk",
+     "type": "kit/button",
+     "props": {
+      "label": "Done",
+      "variant": "primary",
+      "block": true,
+      "icon": "",
+      "disabled": false
+     },
+     "link": "sr6j9ha0rz"
+    }
+   ]
+  },
+  {
+   "id": "sr6j9iqyjb",
+   "name": "Verify code",
+   "settings": {
+    "title": "Verification",
+    "navBar": "native",
+    "leading": "back",
+    "trailing": "none",
+    "background": "default",
+    "bodyAlign": "start"
+   },
+   "body": [
+    {
+     "id": "nr6j9irlfr",
+     "type": "kit/steps",
+     "props": {
+      "current": 2,
+      "total": 3,
+      "label": true
+     }
+    },
+    {
+     "id": "nr6j9ishui",
+     "type": "kit/heading",
+     "props": {
+      "text": "Enter your code",
+      "size": "m",
+      "align": "start",
+      "tone": "default"
+     }
+    },
+    {
+     "id": "nr6j9itqiv",
+     "type": "kit/text",
+     "props": {
+      "text": "We sent a 6-digit code to your phone ending in 42.",
+      "variant": "body",
+      "tone": "muted",
+      "align": "start",
+      "weight": "regular"
+     }
+    },
+    {
+     "id": "nr6j9ium1o",
+     "type": "layout/spacer",
+     "props": {
+      "size": "s"
+     }
+    },
+    {
+     "id": "nr6j9ivg53",
+     "type": "custom/code-input",
+     "props": {
+      "label": "Enter the code we sent you",
+      "length": 6
+     }
+    },
+    {
+     "id": "nr6j9iwhl2",
+     "type": "kit/link",
+     "props": {
+      "label": "Send a new code",
+      "icon": "",
+      "align": "center"
+     }
+    },
+    {
+     "id": "nr6j9ixo5z",
+     "type": "layout/spacer",
+     "props": {
+      "size": "fill"
+     }
+    },
+    {
+     "id": "nr6j9iyzfk",
+     "type": "@block",
+     "props": {
+      "blockId": "br6j9h7b4i"
+     },
+     "overrides": {}
+    }
+   ],
+   "footer": [
+    {
+     "id": "nr6j9izaju",
+     "type": "kit/button",
+     "props": {
+      "label": "Verify",
+      "variant": "primary",
+      "block": true,
+      "icon": "",
+      "disabled": false
+     }
+    }
+   ]
+  },
+  {
+   "id": "sr6j9i104ke",
+   "name": "Savings overview",
+   "settings": {
+    "title": "Savings",
+    "navBar": "native",
+    "leading": "back",
+    "trailing": "none",
+    "background": "subtle",
+    "bodyAlign": "start"
+   },
+   "body": [
+    {
+     "id": "nr6j9i11cj5",
+     "type": "kit/amount",
+     "props": {
+      "amount": 4820.35,
+      "currency": "EUR",
+      "label": "Total savings",
+      "size": "xl",
+      "tone": "default",
+      "align": "start"
+     }
+    },
+    {
+     "id": "nr6j9i12b10",
+     "type": "kit/account-card",
+     "props": {
+      "name": "Holiday",
+      "iban": "NL00 BANK 0555 1234 00",
+      "balance": 1320.35,
+      "currency": "EUR",
+      "icon": "plane"
+     }
+    },
+    {
+     "id": "nr6j9i13nv4",
+     "type": "kit/account-card",
+     "props": {
+      "name": "Rainy day",
+      "iban": "NL00 BANK 0555 9876 00",
+      "balance": 3500,
+      "currency": "EUR",
+      "icon": "umbrella"
+     }
+    },
+    {
+     "id": "nr6j9i148wv",
+     "type": "custom/promo-card",
+     "props": {
+      "heading": "Save automatically",
+      "text": "Round up every payment and put the change aside.",
+      "cta": "Set up",
+      "icon": "piggy-bank",
+      "tone": "primary"
+     }
+    },
+    {
+     "id": "nr6j9i176oz",
+     "type": "layout/section",
+     "props": {
+      "title": "Recent",
+      "gap": "none"
+     },
+     "slots": {
+      "default": [
+       {
+        "id": "nr6j9i15xy2",
+        "type": "kit/list-item",
+        "props": {
+         "heading": "Round-up",
+         "subtitle": "Today",
+         "icon": "arrow-down-left",
+         "trailing": "value",
+         "value": "+ € 0,65",
+         "checked": false,
+         "divider": true
+        }
+       },
+       {
+        "id": "nr6j9i167ke",
+        "type": "kit/list-item",
+        "props": {
+         "heading": "Monthly transfer",
+         "subtitle": "1 Oct",
+         "icon": "repeat",
+         "trailing": "value",
+         "value": "+ € 100,00",
+         "checked": false,
+         "divider": false
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "footer": []
+  },
+  {
+   "id": "srcij817upf",
+   "name": "New screen",
+   "settings": {
+    "title": "New screen",
+    "navBar": "native",
+    "leading": "back",
+    "trailing": "none",
+    "background": "default",
+    "bodyAlign": "start"
+   },
+   "body": [
+    {
+     "id": "nrcmhf18pxu",
+     "type": "lion/lion-input",
+     "props": {
+      "label": "Name",
+      "placeholder": "",
+      "disabled": false,
+      "readonly": false,
+      "name": "",
+      "type": "text"
+     }
+    },
+    {
+     "id": "nrhvhc1xbx",
+     "type": "kit/heading",
+     "props": {
+      "text": "Your details",
+      "size": "l",
+      "align": "start",
+      "tone": "default"
+     }
+    },
+    {
+     "id": "nrcmi519bsw",
+     "type": "lion/lion-input-iban",
+     "props": {
+      "label": "IBAN",
+      "placeholder": "",
+      "disabled": false,
+      "readonly": false,
+      "name": ""
+     }
+    },
+    {
+     "id": "nrcmj01ag5z",
+     "type": "lion/lion-switch",
+     "props": {
+      "label": "Notifications",
+      "checked": false,
+      "disabled": false
+     }
+    },
+    {
+     "id": "nrcmjv1bd9q",
+     "type": "lion/lion-button",
+     "props": {
+      "text": "Lion button",
+      "disabled": false,
+      "type": "button"
+     }
+    }
+   ],
+   "footer": []
+  }
+ ],
+ "blocks": [
+  {
+   "id": "br6j9h1fdv",
+   "name": "Status header",
+   "description": "Icon badge with title and supporting text.",
+   "icon": "circle-dot",
+   "root": {
+    "id": "nr6j9h6cpy",
+    "type": "layout/stack",
+    "props": {
+     "gap": "l",
+     "padding": "none",
+     "align": "center"
+    },
+    "slots": {
+     "default": [
+      {
+       "id": "nr6j9h2wkt",
+       "type": "kit/icon-badge",
+       "props": {
+        "icon": "download",
+        "size": "xl",
+        "tone": "accent"
+       }
+      },
+      {
+       "id": "nr6j9h5c13",
+       "type": "layout/stack",
+       "props": {
+        "gap": "xs",
+        "padding": "none",
+        "align": "stretch"
+       },
+       "slots": {
+        "default": [
+         {
+          "id": "nr6j9h30vw",
+          "type": "kit/heading",
+          "props": {
+           "text": "Title",
+           "size": "m",
+           "align": "center",
+           "tone": "default"
+          }
+         },
+         {
+          "id": "nr6j9h4g90",
+          "type": "kit/text",
+          "props": {
+           "text": "Supporting text",
+           "variant": "small",
+           "tone": "muted",
+           "align": "center",
+           "weight": "regular"
+          }
+         }
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "br6j9h7b4i",
+   "name": "Help link",
+   "description": "Centered link to customer support.",
+   "icon": "circle-help",
+   "root": {
+    "id": "nr6j9h89ih",
+    "type": "kit/link",
+    "props": {
+     "label": "Questions? Contact us",
+     "icon": "chevron-right",
+     "align": "center"
+    }
+   }
+  },
+  {
+   "id": "brfwmh1qp0",
+   "name": "Release note",
+   "root": {
+    "id": "nrfwmh2xxb",
+    "type": "kit/note",
+    "props": {
+     "text": "Faster autofocus algorithm",
+     "heading": "",
+     "tone": "info",
+     "icon": false,
+     "align": "center"
+    },
+    "link": null
+   },
+   "icon": "info"
+  }
+ ],
+ "remoteLibraries": [
+  {
+   "id": "remote-rimn11js0",
+   "name": "Shoelace",
+   "moduleUrl": "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/",
+   "manifestUrl": "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/custom-elements.json",
+   "stylesheetUrl": "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css",
+   "tagPrefix": "sl-",
+   "enabled": true
+  }
+ ],
+ "disabledLibraries": []
+}

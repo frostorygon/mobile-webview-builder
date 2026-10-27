@@ -1,0 +1,5472 @@
+{
+ "schemaVersion": "1.0.0",
+ "package": "@lion/ui",
+ "modules": [
+  {
+   "kind": "javascript-module",
+   "path": "slim",
+   "declarations": [
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-accordion",
+     "name": "LionAccordion",
+     "attributes": [
+      {
+       "name": "focusedIndex",
+       "fieldName": "focusedIndex",
+       "type": {
+        "text": "number"
+       },
+       "description": "index number of the focused accordion"
+      },
+      {
+       "name": "expanded",
+       "fieldName": "expanded",
+       "type": {
+        "text": "array"
+       },
+       "description": "array of indices of the expanded accordions"
+      },
+      {
+       "name": "exclusive",
+       "fieldName": "exclusive",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "exclusive property allows only one accordion slot to be open at a time"
+      }
+     ],
+     "slots": [
+      {
+       "description": "The invoker element for the accordion",
+       "name": "invoker"
+      },
+      {
+       "description": "The content element for the accordion",
+       "name": "content"
+      },
+      {
+       "description": "The slot for the accordion, used to rearrange invokers and content",
+       "name": "_accordion"
+      }
+     ],
+     "definedIn": "exports/define/lion-accordion.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-button",
+     "name": "LionButton",
+     "description": "Use LionButton (or LionButtonReset|LionButtonSubmit) when there is a need to extend HTMLButtonElement.\nIt allows to create complex shadow DOM for buttons needing this. Think of:\n- a material Design button that needs a JS controlled ripple\n- a LionSelectRich invoker that needs a complex shadow DOM structure\n(for styling/maintainability purposes)\n- a specialized button (for instance a primary button or icon button in a Design System) that\nneeds a simple api: `<my-button>text</my-button>` is always better than\n`<button class=\"my-button\"><div class=\"my-button__container\">text</div><button>`\n\nIn other cases, whenever you can, still use native HTMLButtonElement (`<button>`).\n\nNote that LionButton is meant for buttons with type=\"button\". It's cleaner and more\nlightweight than LionButtonReset and LionButtonSubmit, which should only be considered when native\n`<form>` support is needed:\n- When type=\"reset|submit\" should be supported, use LionButtonReset.\n- When implicit form submission should be supported on top, use LionButtonSubmit.",
+     "attributes": [
+      {
+       "name": "active",
+       "fieldName": "active",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "type",
+       "fieldName": "type",
+       "type": {
+        "text": "string"
+       },
+       "default": "'button'"
+      },
+      {
+       "name": "tabindex",
+       "fieldName": "tabIndex",
+       "type": {
+        "text": "number"
+       }
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      }
+     ],
+     "definedIn": "exports/define/lion-button.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-button-reset",
+     "name": "LionButtonReset",
+     "description": "This adds functionality for form buttons (type 'submit' and 'reset').\nIt allows to submit or reset a <form> by spawning a click on a temporrary native button inside\nthe form.\nUse LionButtonSubmit when implicit form submission should be supported as well.\n\nFunctionality in this button is not purely for type=\"reset\", also for type=\"submit\".\nFor mainainability purposes the submit functionality is part of LionButtonReset\n(it needs the same logic).\nLionButtonReset could therefore actually be considered as 'LionButtonForm' (without the\nimplicit form submission logic), but LionButtonReset is an easier to grasp name for\nApplication Developers: for reset buttons, always use LionButtonReset, for submit\nbuttons always use LionButtonSubmit.",
+     "attributes": [
+      {
+       "name": "tabindex",
+       "fieldName": "tabIndex",
+       "type": {
+        "text": "number"
+       }
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "active",
+       "fieldName": "active",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "type",
+       "fieldName": "type",
+       "type": {
+        "text": "string"
+       },
+       "default": "'button'"
+      }
+     ],
+     "definedIn": "exports/define/lion-button-reset.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-button-submit",
+     "name": "LionButtonSubmit",
+     "description": "Contains all the funcionaility of LionButton and LionButtonReset. On top of that it\nsupports implicit form submission.\n\nUse when:\n- the Application Developer should be able to switch types between 'submit'|'reset'|'button'\n(this is similar to how native HTMLButtonElement works)\n- a submit button with native form support is needed",
+     "attributes": [
+      {
+       "name": "tabindex",
+       "fieldName": "tabIndex",
+       "type": {
+        "text": "number"
+       }
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "active",
+       "fieldName": "active",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "type",
+       "fieldName": "type",
+       "type": {
+        "text": "string"
+       },
+       "default": "'button'"
+      }
+     ],
+     "definedIn": "exports/define/lion-button-submit.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-calendar",
+     "name": "LionCalendar",
+     "attributes": [],
+     "definedIn": "exports/define/lion-calendar.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-checkbox-group",
+     "name": "LionCheckboxGroup",
+     "description": "A wrapper around multiple checkboxes",
+     "attributes": [
+      {
+       "name": "multiple-choice",
+       "fieldName": "multipleChoice",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "When false (default), modelValue and serializedValue will reflect the\ncurrently selected choice (usually a string). When true, modelValue will and\nserializedValue will be an array of strings."
+      },
+      {
+       "name": "_isFormOrFieldset",
+       "fieldName": "_isFormOrFieldset",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag that determines how \".formElements\" should behave.\nFor a regular fieldset (see LionFieldset) we expect \".formElements\"\nto be accessible as an object.\nIn case of a radio-group, a checkbox-group or a select/listbox,\nit should act like an array (see ChoiceGroupMixin).\nUsually, when false, we deal with a choice-group (radio-group, checkbox-group,\n(multi)select)"
+      },
+      {
+       "name": "shows-feedback-for",
+       "fieldName": "showsFeedbackFor",
+       "type": {
+        "text": "ValidationType[]"
+       },
+       "default": "[]",
+       "description": "Based on outcome of feedbackCondition, this array decides what ValidationTypes should be\nshown in validationFeedback, based on meta data like interaction states.\n\nFor styling purposes, it reflects it `[shows-feedback-for=\"error warning\"]`"
+      },
+      {
+       "name": "is-pending",
+       "fieldName": "isPending",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag indicating whether async validation is pending.\nCreates attribute [is-pending] as a styling hook"
+      },
+      {
+       "name": "touched",
+       "fieldName": "touched",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has focused and left(blurred) the field."
+      },
+      {
+       "name": "dirty",
+       "fieldName": "dirty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has changed the value of the field."
+      },
+      {
+       "name": "filled",
+       "fieldName": "filled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when the modelValue is non-empty (see _isEmpty in FormControlMixin)"
+      },
+      {
+       "name": "submitted",
+       "fieldName": "submitted",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when parent form is submitted"
+      },
+      {
+       "name": "focused",
+       "fieldName": "focused",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when any of the children is focused."
+      },
+      {
+       "name": "prefilled",
+       "fieldName": "prefilled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when all of the children are prefilled (see InteractionStateMixin for more details.)"
+      },
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "A Boolean attribute which, if present, indicates that the user should not be able to edit\nthe value of the input. The difference between disabled and readonly is that read-only\ncontrols can still function, whereas disabled controls generally do not function as\ncontrols until they are enabled.\n(From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly)"
+      },
+      {
+       "name": "label",
+       "fieldName": "label",
+       "type": {
+        "text": "string"
+       },
+       "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used."
+      },
+      {
+       "name": "label-sr-only",
+       "fieldName": "labelSrOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "The label will only be visible for srceen readers when true"
+      },
+      {
+       "name": "help-text",
+       "fieldName": "helpText",
+       "type": {
+        "text": "string"
+       },
+       "description": "The helpt text for the input node.\nWhen no light dom defined via [slot=help-text], this value will be used"
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      }
+     ],
+     "definedIn": "exports/define/lion-checkbox-group.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-checkbox-indeterminate",
+     "name": "LionCheckboxIndeterminate",
+     "attributes": [
+      {
+       "name": "indeterminate",
+       "fieldName": "indeterminate",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Indeterminate state of the checkbox"
+      },
+      {
+       "name": "mixed-state",
+       "fieldName": "mixedState",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "checked",
+       "fieldName": "checked",
+       "type": {
+        "text": "boolean"
+       }
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Boolean indicating whether or not this element is disabled."
+      },
+      {
+       "name": "modelValue",
+       "fieldName": "modelValue",
+       "type": {
+        "text": "{value:string|any,checked:boolean}"
+       },
+       "default": "{ value: '', checked: false }",
+       "description": "Whereas 'normal' `.modelValue`s usually store a complex/typed version\nof a view value, choice inputs have a slightly different approach.\nIn order to remain their Single Source of Truth characteristic, choice inputs\nstore both the value and 'checkedness', in the format { value: 'x', checked: true }\nDifferent from the platform, this also allows to serialize the 'non checkedness',\nallowing to restore form state easily and inform the server about unchecked options."
+      },
+      {
+       "name": "choiceValue",
+       "fieldName": "choiceValue",
+       "type": {
+        "text": "string|any"
+       },
+       "description": "The value that will be registered to the modelValue of the parent ChoiceGroup. Recommended\nto be a string"
+      },
+      {
+       "name": "autocomplete",
+       "fieldName": "autocomplete",
+       "type": {
+        "text": "string | undefined"
+       },
+       "default": "undefined",
+       "description": "Delegates this property to input/textarea/select."
+      },
+      {
+       "name": "focused",
+       "fieldName": "focused",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) is focused.\nReflects to attribute '[focused]' as a styling hook"
+      },
+      {
+       "name": "focused-visible",
+       "fieldName": "focusedVisible",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) matches ':focus-visible'\nReflects to attribute '[focused-visible]' as a styling hook\nSee: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"
+      },
+      {
+       "name": "autofocus",
+       "fieldName": "autofocus",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "A Boolean attribute which, if present, indicates that the user should not be able to edit\nthe value of the input. The difference between disabled and readonly is that read-only\ncontrols can still function, whereas disabled controls generally do not function as\ncontrols until they are enabled.\n(From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly)"
+      },
+      {
+       "name": "label",
+       "fieldName": "label",
+       "type": {
+        "text": "string"
+       },
+       "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used."
+      },
+      {
+       "name": "label-sr-only",
+       "fieldName": "labelSrOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "The label will only be visible for srceen readers when true"
+      },
+      {
+       "name": "help-text",
+       "fieldName": "helpText",
+       "type": {
+        "text": "string"
+       },
+       "description": "The helpt text for the input node.\nWhen no light dom defined via [slot=help-text], this value will be used"
+      },
+      {
+       "name": "type",
+       "fieldName": "type",
+       "type": {
+        "text": "string"
+       },
+       "default": "'text'"
+      },
+      {
+       "name": "placeholder",
+       "fieldName": "placeholder",
+       "type": {
+        "text": "string"
+       },
+       "default": "''"
+      },
+      {
+       "name": "name",
+       "fieldName": "name",
+       "type": {
+        "text": "string"
+       },
+       "default": "''",
+       "description": "The name the element will be registered with to the .formElements collection\nof the parent. Also, it serves as the key of key/value pairs in\n modelValue/serializedValue objects"
+      },
+      {
+       "name": "allow-cross-root-registration",
+       "fieldName": "allowCrossRootRegistration",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "To encourage accessibility best practices, `form-element-register` events\ndo not pierce through shadow roots. This forces the developer to create form groups and fieldsets that automatically allow the creation of accessible relationships in the same dom tree.\nUse this option if you know what you're doing. It will then be possible to nest FormControls\ninside shadow dom. See https://lion.js.org/fundamentals/rationales/accessibility/#shadow-roots-and-accessibility"
+      },
+      {
+       "name": "touched",
+       "fieldName": "touched",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has focused and left(blurred) the field."
+      },
+      {
+       "name": "dirty",
+       "fieldName": "dirty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has changed the value of the field."
+      },
+      {
+       "name": "filled",
+       "fieldName": "filled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when the modelValue is non-empty (see _isEmpty in FormControlMixin)"
+      },
+      {
+       "name": "shows-feedback-for",
+       "fieldName": "showsFeedbackFor",
+       "type": {
+        "text": "ValidationType[]"
+       },
+       "default": "[]",
+       "description": "Based on outcome of feedbackCondition, this array decides what ValidationTypes should be\nshown in validationFeedback, based on meta data like interaction states.\n\nFor styling purposes, it reflects it `[shows-feedback-for=\"error warning\"]`"
+      },
+      {
+       "name": "is-pending",
+       "fieldName": "isPending",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag indicating whether async validation is pending.\nCreates attribute [is-pending] as a styling hook"
+      }
+     ],
+     "definedIn": "exports/define/lion-checkbox-indeterminate.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-checkbox",
+     "name": "LionCheckbox",
+     "attributes": [
+      {
+       "name": "checked",
+       "fieldName": "checked",
+       "type": {
+        "text": "boolean"
+       }
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Boolean indicating whether or not this element is disabled."
+      },
+      {
+       "name": "modelValue",
+       "fieldName": "modelValue",
+       "type": {
+        "text": "{value:string|any,checked:boolean}"
+       },
+       "default": "{ value: '', checked: false }",
+       "description": "Whereas 'normal' `.modelValue`s usually store a complex/typed version\nof a view value, choice inputs have a slightly different approach.\nIn order to remain their Single Source of Truth characteristic, choice inputs\nstore both the value and 'checkedness', in the format { value: 'x', checked: true }\nDifferent from the platform, this also allows to serialize the 'non checkedness',\nallowing to restore form state easily and inform the server about unchecked options."
+      },
+      {
+       "name": "choiceValue",
+       "fieldName": "choiceValue",
+       "type": {
+        "text": "string|any"
+       },
+       "description": "The value that will be registered to the modelValue of the parent ChoiceGroup. Recommended\nto be a string"
+      },
+      {
+       "name": "autocomplete",
+       "fieldName": "autocomplete",
+       "type": {
+        "text": "string | undefined"
+       },
+       "default": "undefined",
+       "description": "Delegates this property to input/textarea/select."
+      },
+      {
+       "name": "focused",
+       "fieldName": "focused",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) is focused.\nReflects to attribute '[focused]' as a styling hook"
+      },
+      {
+       "name": "focused-visible",
+       "fieldName": "focusedVisible",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) matches ':focus-visible'\nReflects to attribute '[focused-visible]' as a styling hook\nSee: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"
+      },
+      {
+       "name": "autofocus",
+       "fieldName": "autofocus",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "A Boolean attribute which, if present, indicates that the user should not be able to edit\nthe value of the input. The difference between disabled and readonly is that read-only\ncontrols can still function, whereas disabled controls generally do not function as\ncontrols until they are enabled.\n(From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly)"
+      },
+      {
+       "name": "label",
+       "fieldName": "label",
+       "type": {
+        "text": "string"
+       },
+       "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used."
+      },
+      {
+       "name": "label-sr-only",
+       "fieldName": "labelSrOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "The label will only be visible for srceen readers when true"
+      },
+      {
+       "name": "help-text",
+       "fieldName": "helpText",
+       "type": {
+        "text": "string"
+       },
+       "description": "The helpt text for the input node.\nWhen no light dom defined via [slot=help-text], this value will be used"
+      },
+      {
+       "name": "type",
+       "fieldName": "type",
+       "type": {
+        "text": "string"
+       },
+       "default": "'text'"
+      },
+      {
+       "name": "placeholder",
+       "fieldName": "placeholder",
+       "type": {
+        "text": "string"
+       },
+       "default": "''"
+      },
+      {
+       "name": "name",
+       "fieldName": "name",
+       "type": {
+        "text": "string"
+       },
+       "default": "''",
+       "description": "The name the element will be registered with to the .formElements collection\nof the parent. Also, it serves as the key of key/value pairs in\n modelValue/serializedValue objects"
+      },
+      {
+       "name": "allow-cross-root-registration",
+       "fieldName": "allowCrossRootRegistration",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "To encourage accessibility best practices, `form-element-register` events\ndo not pierce through shadow roots. This forces the developer to create form groups and fieldsets that automatically allow the creation of accessible relationships in the same dom tree.\nUse this option if you know what you're doing. It will then be possible to nest FormControls\ninside shadow dom. See https://lion.js.org/fundamentals/rationales/accessibility/#shadow-roots-and-accessibility"
+      },
+      {
+       "name": "touched",
+       "fieldName": "touched",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has focused and left(blurred) the field."
+      },
+      {
+       "name": "dirty",
+       "fieldName": "dirty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has changed the value of the field."
+      },
+      {
+       "name": "filled",
+       "fieldName": "filled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when the modelValue is non-empty (see _isEmpty in FormControlMixin)"
+      },
+      {
+       "name": "shows-feedback-for",
+       "fieldName": "showsFeedbackFor",
+       "type": {
+        "text": "ValidationType[]"
+       },
+       "default": "[]",
+       "description": "Based on outcome of feedbackCondition, this array decides what ValidationTypes should be\nshown in validationFeedback, based on meta data like interaction states.\n\nFor styling purposes, it reflects it `[shows-feedback-for=\"error warning\"]`"
+      },
+      {
+       "name": "is-pending",
+       "fieldName": "isPending",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag indicating whether async validation is pending.\nCreates attribute [is-pending] as a styling hook"
+      }
+     ],
+     "definedIn": "exports/define/lion-checkbox.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-collapsible",
+     "name": "LionCollapsible",
+     "description": "`LionCollapsible` is a class for custom collapsible element (`<lion-collapsible>` web component).",
+     "attributes": [
+      {
+       "name": "opened",
+       "fieldName": "opened",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      }
+     ],
+     "slots": [
+      {
+       "description": "The invoker element for the collapsible",
+       "name": "invoker"
+      },
+      {
+       "description": "The content element for the collapsible",
+       "name": "content"
+      }
+     ],
+     "definedIn": "exports/define/lion-collapsible.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-combobox",
+     "name": "LionCombobox",
+     "description": "LionCombobox: implements the wai-aria combobox design pattern and integrates it as a Lion\nFormControl",
+     "attributes": [
+      {
+       "name": "autocomplete",
+       "fieldName": "autocomplete",
+       "type": {
+        "text": "'none'|'list'|'inline'|'both'"
+       },
+       "default": "'both'",
+       "description": "When \"list\", will filter listbox suggestions based on textbox value.\nWhen \"both\", an inline completion string will be added to the textbox as well."
+      },
+      {
+       "name": "match-mode",
+       "fieldName": "matchMode",
+       "type": {
+        "text": "'begin'|'all'"
+       },
+       "default": "'all'",
+       "description": "When typing in the textbox, will by default be set on 'begin',\nonly matching the beginning part in suggestion list.\n=> 'a' will match 'apple' from ['apple', 'pear', 'citrus'].\nWhen set to 'all', will match middle of the word as well\n=> 'a' will match 'apple' and 'pear'"
+      },
+      {
+       "name": "show-all-on-empty",
+       "fieldName": "showAllOnEmpty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "When true, the listbox is open and textbox goes from a value to empty, all options are shown.\nBy default, the listbox closes on empty, similar to wai-aria example and <datalist>"
+      },
+      {
+       "name": "requireOptionMatch",
+       "fieldName": "requireOptionMatch",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "true",
+       "description": "If set to false, the value is allowed to not match any of the options.\nWe set the default to true for backwards compatibility"
+      },
+      {
+       "name": "allow-custom-choice",
+       "fieldName": "allowCustomChoice",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "__shouldAutocompleteNextUpdate",
+       "fieldName": "__shouldAutocompleteNextUpdate"
+      },
+      {
+       "name": "modelValue",
+       "fieldName": "modelValue",
+       "type": {
+        "text": "object"
+       }
+      },
+      {
+       "name": "multiple-choice",
+       "fieldName": "multipleChoice",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "When false (default), modelValue and serializedValue will reflect the\ncurrently selected choice (usually a string). When true, modelValue will and\nserializedValue will be an array of strings."
+      },
+      {
+       "name": "orientation",
+       "fieldName": "orientation",
+       "type": {
+        "text": "string"
+       },
+       "default": "'vertical'",
+       "description": "Informs screen reader and affects keyboard navigation.\nBy default 'vertical'"
+      },
+      {
+       "name": "selection-follows-focus",
+       "fieldName": "selectionFollowsFocus",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "When true, will synchronize activedescendant and selected element on\narrow key navigation.\nThis behavior can usually be seen on <select> on the Windows platform.\nNote that this behavior cannot be used when multiple-choice is true.\nSee: https://www.w3.org/TR/wai-aria-practices/#kbd_selection_follows_focus"
+      },
+      {
+       "name": "rotate-keyboard-navigation",
+       "fieldName": "rotateKeyboardNavigation",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Will give first option active state when navigated to the next option from\nlast option."
+      },
+      {
+       "name": "has-no-default-selected",
+       "fieldName": "hasNoDefaultSelected",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "When setting this to true, on initial render, no option will be selected.\nIt is advisable to override `_noSelectionTemplate` method in the select-invoker\nto render some kind of placeholder initially"
+      },
+      {
+       "name": "_noTypeAhead",
+       "fieldName": "_noTypeAhead",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "When false, a user can type on which the focus will jump to the matching option"
+      },
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "A Boolean attribute which, if present, indicates that the user should not be able to edit\nthe value of the input. The difference between disabled and readonly is that read-only\ncontrols can still function, whereas disabled controls generally do not function as\ncontrols until they are enabled.\n(From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly)"
+      },
+      {
+       "name": "label",
+       "fieldName": "label",
+       "type": {
+        "text": "string"
+       },
+       "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used."
+      },
+      {
+       "name": "label-sr-only",
+       "fieldName": "labelSrOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "The label will only be visible for srceen readers when true"
+      },
+      {
+       "name": "help-text",
+       "fieldName": "helpText",
+       "type": {
+        "text": "string"
+       },
+       "description": "The helpt text for the input node.\nWhen no light dom defined via [slot=help-text], this value will be used"
+      },
+      {
+       "name": "_isFormOrFieldset",
+       "fieldName": "_isFormOrFieldset",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag that determines how \".formElements\" should behave.\nFor a regular fieldset (see LionFieldset) we expect \".formElements\"\nto be accessible as an object.\nIn case of a radio-group, a checkbox-group or a select/listbox,\nit should act like an array (see ChoiceGroupMixin).\nUsually, when false, we deal with a choice-group (radio-group, checkbox-group,\n(multi)select)"
+      },
+      {
+       "name": "focused",
+       "fieldName": "focused",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) is focused.\nReflects to attribute '[focused]' as a styling hook"
+      },
+      {
+       "name": "focused-visible",
+       "fieldName": "focusedVisible",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) matches ':focus-visible'\nReflects to attribute '[focused-visible]' as a styling hook\nSee: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"
+      },
+      {
+       "name": "autofocus",
+       "fieldName": "autofocus",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "touched",
+       "fieldName": "touched",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has focused and left(blurred) the field."
+      },
+      {
+       "name": "dirty",
+       "fieldName": "dirty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has changed the value of the field."
+      },
+      {
+       "name": "filled",
+       "fieldName": "filled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when the modelValue is non-empty (see _isEmpty in FormControlMixin)"
+      },
+      {
+       "name": "shows-feedback-for",
+       "fieldName": "showsFeedbackFor",
+       "type": {
+        "text": "ValidationType[]"
+       },
+       "default": "[]",
+       "description": "Based on outcome of feedbackCondition, this array decides what ValidationTypes should be\nshown in validationFeedback, based on meta data like interaction states.\n\nFor styling purposes, it reflects it `[shows-feedback-for=\"error warning\"]`"
+      },
+      {
+       "name": "is-pending",
+       "fieldName": "isPending",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag indicating whether async validation is pending.\nCreates attribute [is-pending] as a styling hook"
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      }
+     ],
+     "slots": [
+      {
+       "description": "The listbox element for the combobox, e.g. <lion-options>",
+       "name": "listbox"
+      },
+      {
+       "description": "The selection display element for the combobox, e.g. <lion-selection-display>",
+       "name": "selection-display"
+      }
+     ],
+     "definedIn": "exports/define/lion-combobox.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-dialog",
+     "name": "LionDialog",
+     "attributes": [
+      {
+       "name": "is-alert-dialog",
+       "fieldName": "isAlertDialog",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      }
+     ],
+     "definedIn": "exports/define/lion-dialog.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-drawer",
+     "name": "LionDrawer",
+     "description": "LionDrawer: extension of lion-collapsible with drawer specific styles and animations",
+     "attributes": [
+      {
+       "name": "transitioning",
+       "fieldName": "transitioning",
+       "type": {
+        "text": "boolean"
+       }
+      },
+      {
+       "name": "opened",
+       "fieldName": "opened",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "position",
+       "fieldName": "position",
+       "type": {
+        "text": "string"
+       },
+       "description": "Setter for position property, available values are 'top', 'left' and 'right'"
+      }
+     ],
+     "slots": [
+      {
+       "description": "The invoker element for the drawer",
+       "name": "invoker",
+       "inheritedFrom": {
+        "name": "LionCollapsible",
+        "module": "components/collapsible/src/LionCollapsible.js"
+       }
+      },
+      {
+       "description": "The content element for the drawer",
+       "name": "content",
+       "inheritedFrom": {
+        "name": "LionCollapsible",
+        "module": "components/collapsible/src/LionCollapsible.js"
+       }
+      },
+      {
+       "description": "The headline element for the drawer",
+       "name": "headline"
+      }
+     ],
+     "definedIn": "exports/define/lion-drawer.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-fieldset",
+     "name": "LionFieldset",
+     "description": "LionFieldset is basically a 'sub form' and can have its own nested sub forms.\nIt mimics the native <fieldset> element in this sense, but has all the functionality of\na FormControl (advanced styling, validation, interaction states etc.) Also see\nFormGroupMixin it depends on.\n\nLionFieldset enables the '_isFormOrFieldset' flag in FormRegistrarMixin. This makes .formElements\nact not only as an array, but also as an object (see FormRegistarMixin for more information).\nAs a bonus, It can also group children having names ending with '[]'.\n\nAbove will be  helpful for both forms and sub forms, which can contain sub forms as children\nas well and allow for a nested form structure.\nContrary, other form groups (choice groups like radio-group, checkbox-group and (multi)select)\ndon't: they should be considered 'end nodes' or 'leaves' of the form and their children/formElements\ncannot be accessed individually via object keys.",
+     "attributes": [
+      {
+       "name": "submitted",
+       "fieldName": "submitted",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when parent form is submitted"
+      },
+      {
+       "name": "focused",
+       "fieldName": "focused",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when any of the children is focused."
+      },
+      {
+       "name": "dirty",
+       "fieldName": "dirty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when any of the children is dirty (see InteractionStateMixin for more details.)"
+      },
+      {
+       "name": "touched",
+       "fieldName": "touched",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when the group as a whole is blurred (see InteractionStateMixin for more details.)"
+      },
+      {
+       "name": "prefilled",
+       "fieldName": "prefilled",
+       "type": {
+        "text": "boolean"
+       },
+       "description": "True when all of the children are prefilled (see InteractionStateMixin for more details.)"
+      },
+      {
+       "name": "_isFormOrFieldset",
+       "fieldName": "_isFormOrFieldset",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag that determines how \".formElements\" should behave.\nFor a regular fieldset (see LionFieldset) we expect \".formElements\"\nto be accessible as an object.\nIn case of a radio-group, a checkbox-group or a select/listbox,\nit should act like an array (see ChoiceGroupMixin).\nUsually, when false, we deal with a choice-group (radio-group, checkbox-group,\n(multi)select)"
+      },
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "A Boolean attribute which, if present, indicates that the user should not be able to edit\nthe value of the input. The difference between disabled and readonly is that read-only\ncontrols can still function, whereas disabled controls generally do not function as\ncontrols until they are enabled.\n(From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly)"
+      },
+      {
+       "name": "label",
+       "fieldName": "label",
+       "type": {
+        "text": "string"
+       },
+       "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used."
+      },
+      {
+       "name": "label-sr-only",
+       "fieldName": "labelSrOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "The label will only be visible for srceen readers when true"
+      },
+      {
+       "name": "help-text",
+       "fieldName": "helpText",
+       "type": {
+        "text": "string"
+       },
+       "description": "The helpt text for the input node.\nWhen no light dom defined via [slot=help-text], this value will be used"
+      },
+      {
+       "name": "shows-feedback-for",
+       "fieldName": "showsFeedbackFor",
+       "type": {
+        "text": "ValidationType[]"
+       },
+       "default": "[]",
+       "description": "Based on outcome of feedbackCondition, this array decides what ValidationTypes should be\nshown in validationFeedback, based on meta data like interaction states.\n\nFor styling purposes, it reflects it `[shows-feedback-for=\"error warning\"]`"
+      },
+      {
+       "name": "is-pending",
+       "fieldName": "isPending",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag indicating whether async validation is pending.\nCreates attribute [is-pending] as a styling hook"
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      }
+     ],
+     "definedIn": "exports/define/lion-fieldset.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-field",
+     "name": "LionField",
+     "description": "`LionField`: wraps <input>, <textarea>, <select> and other interactable elements.\nAlso it would follow a nice hierarchy: lion-form -> lion-fieldset -> lion-field\n\nNote: We don't support placeholders, because we have a helper text and\nplaceholders confuse the user with accessibility needs.\n\nPlease see the docs for in depth information.",
+     "attributes": [
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "A Boolean attribute which, if present, indicates that the user should not be able to edit\nthe value of the input. The difference between disabled and readonly is that read-only\ncontrols can still function, whereas disabled controls generally do not function as\ncontrols until they are enabled.\n(From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly)"
+      },
+      {
+       "name": "label",
+       "fieldName": "label",
+       "type": {
+        "text": "string"
+       },
+       "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used."
+      },
+      {
+       "name": "label-sr-only",
+       "fieldName": "labelSrOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "The label will only be visible for srceen readers when true"
+      },
+      {
+       "name": "help-text",
+       "fieldName": "helpText",
+       "type": {
+        "text": "string"
+       },
+       "description": "The helpt text for the input node.\nWhen no light dom defined via [slot=help-text], this value will be used"
+      },
+      {
+       "name": "name",
+       "fieldName": "name",
+       "type": {
+        "text": "string"
+       },
+       "default": "''",
+       "description": "The name the element will be registered with to the .formElements collection\nof the parent. Also, it serves as the key of key/value pairs in\n modelValue/serializedValue objects"
+      },
+      {
+       "name": "allow-cross-root-registration",
+       "fieldName": "allowCrossRootRegistration",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "To encourage accessibility best practices, `form-element-register` events\ndo not pierce through shadow roots. This forces the developer to create form groups and fieldsets that automatically allow the creation of accessible relationships in the same dom tree.\nUse this option if you know what you're doing. It will then be possible to nest FormControls\ninside shadow dom. See https://lion.js.org/fundamentals/rationales/accessibility/#shadow-roots-and-accessibility"
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "touched",
+       "fieldName": "touched",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has focused and left(blurred) the field."
+      },
+      {
+       "name": "dirty",
+       "fieldName": "dirty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has changed the value of the field."
+      },
+      {
+       "name": "filled",
+       "fieldName": "filled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when the modelValue is non-empty (see _isEmpty in FormControlMixin)"
+      },
+      {
+       "name": "focused",
+       "fieldName": "focused",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) is focused.\nReflects to attribute '[focused]' as a styling hook"
+      },
+      {
+       "name": "focused-visible",
+       "fieldName": "focusedVisible",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) matches ':focus-visible'\nReflects to attribute '[focused-visible]' as a styling hook\nSee: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"
+      },
+      {
+       "name": "autofocus",
+       "fieldName": "autofocus",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "shows-feedback-for",
+       "fieldName": "showsFeedbackFor",
+       "type": {
+        "text": "ValidationType[]"
+       },
+       "default": "[]",
+       "description": "Based on outcome of feedbackCondition, this array decides what ValidationTypes should be\nshown in validationFeedback, based on meta data like interaction states.\n\nFor styling purposes, it reflects it `[shows-feedback-for=\"error warning\"]`"
+      },
+      {
+       "name": "is-pending",
+       "fieldName": "isPending",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag indicating whether async validation is pending.\nCreates attribute [is-pending] as a styling hook"
+      }
+     ],
+     "definedIn": "exports/define/lion-field.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-validation-feedback",
+     "name": "LionValidationFeedback",
+     "attributes": [],
+     "definedIn": "exports/define/lion-validation-feedback.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-form",
+     "name": "LionForm",
+     "description": "LionForm: form wrapper providing extra features and integration with lion-field elements.",
+     "attributes": [
+      {
+       "name": "submitted",
+       "fieldName": "submitted",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when parent form is submitted"
+      },
+      {
+       "name": "focused",
+       "fieldName": "focused",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when any of the children is focused."
+      },
+      {
+       "name": "dirty",
+       "fieldName": "dirty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when any of the children is dirty (see InteractionStateMixin for more details.)"
+      },
+      {
+       "name": "touched",
+       "fieldName": "touched",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when the group as a whole is blurred (see InteractionStateMixin for more details.)"
+      },
+      {
+       "name": "prefilled",
+       "fieldName": "prefilled",
+       "type": {
+        "text": "boolean"
+       },
+       "description": "True when all of the children are prefilled (see InteractionStateMixin for more details.)"
+      },
+      {
+       "name": "_isFormOrFieldset",
+       "fieldName": "_isFormOrFieldset",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag that determines how \".formElements\" should behave.\nFor a regular fieldset (see LionFieldset) we expect \".formElements\"\nto be accessible as an object.\nIn case of a radio-group, a checkbox-group or a select/listbox,\nit should act like an array (see ChoiceGroupMixin).\nUsually, when false, we deal with a choice-group (radio-group, checkbox-group,\n(multi)select)"
+      },
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "A Boolean attribute which, if present, indicates that the user should not be able to edit\nthe value of the input. The difference between disabled and readonly is that read-only\ncontrols can still function, whereas disabled controls generally do not function as\ncontrols until they are enabled.\n(From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly)"
+      },
+      {
+       "name": "label",
+       "fieldName": "label",
+       "type": {
+        "text": "string"
+       },
+       "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used."
+      },
+      {
+       "name": "label-sr-only",
+       "fieldName": "labelSrOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "The label will only be visible for srceen readers when true"
+      },
+      {
+       "name": "help-text",
+       "fieldName": "helpText",
+       "type": {
+        "text": "string"
+       },
+       "description": "The helpt text for the input node.\nWhen no light dom defined via [slot=help-text], this value will be used"
+      },
+      {
+       "name": "shows-feedback-for",
+       "fieldName": "showsFeedbackFor",
+       "type": {
+        "text": "ValidationType[]"
+       },
+       "default": "[]",
+       "description": "Based on outcome of feedbackCondition, this array decides what ValidationTypes should be\nshown in validationFeedback, based on meta data like interaction states.\n\nFor styling purposes, it reflects it `[shows-feedback-for=\"error warning\"]`"
+      },
+      {
+       "name": "is-pending",
+       "fieldName": "isPending",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag indicating whether async validation is pending.\nCreates attribute [is-pending] as a styling hook"
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      }
+     ],
+     "definedIn": "exports/define/lion-form.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-icon",
+     "name": "LionIcon",
+     "description": "Custom element for rendering SVG icons",
+     "attributes": [
+      {
+       "name": "aria-label",
+       "fieldName": "ariaLabel",
+       "type": {
+        "text": "string"
+       },
+       "default": "''"
+      },
+      {
+       "name": "icon-id",
+       "fieldName": "iconId",
+       "type": {
+        "text": "string"
+       },
+       "default": "''"
+      }
+     ],
+     "definedIn": "exports/define/lion-icon.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-input-amount-dropdown",
+     "name": "LionInputAmountDropdown",
+     "description": "LionInputAmountDropdown renders a dropdown like element next to the text field, inside the\nprefix, or suffix, slot. This could be a LionSelect, a LionSelectRich or a native select.\nBy default, the native `<select>` element is used for this, so that it's as lightweight as\npossible. Also, it doesn't need to be a `FormControl`, because it's purely a helper element\nto provide better UX: the modelValue (the text field) contains all needed info:\nthe currency code following ISO 4217 and its corresponding currency symbol using Intl.",
+     "attributes": [
+      {
+       "name": "preferredCurrencies",
+       "fieldName": "preferredCurrencies",
+       "type": {
+        "text": "CurrencyCode[]"
+       },
+       "default": "[]",
+       "description": "Regions that will be shown on top of the dropdown"
+      },
+      {
+       "name": "allowedCurrencies",
+       "fieldName": "allowedCurrencies",
+       "type": {
+        "text": "CurrencyCode[]"
+       },
+       "default": "[]",
+       "description": "Regions that are allowed to be selected in the dropdown."
+      },
+      {
+       "name": "__dropdownSlot",
+       "fieldName": "__dropdownSlot",
+       "type": {
+        "text": "string"
+       },
+       "default": "'prefix'",
+       "description": "Slot position to render the dropdown in"
+      },
+      {
+       "name": "currency",
+       "fieldName": "currency",
+       "type": {
+        "text": "string | undefined"
+       },
+       "default": "undefined"
+      },
+      {
+       "name": "modelValue",
+       "fieldName": "modelValue",
+       "type": {
+        "text": "object"
+       }
+      },
+      {
+       "name": "autocomplete",
+       "fieldName": "autocomplete",
+       "type": {
+        "text": "string | undefined"
+       },
+       "default": "undefined",
+       "description": "Delegates this property to input/textarea/select."
+      },
+      {
+       "name": "focused",
+       "fieldName": "focused",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) is focused.\nReflects to attribute '[focused]' as a styling hook"
+      },
+      {
+       "name": "focused-visible",
+       "fieldName": "focusedVisible",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) matches ':focus-visible'\nReflects to attribute '[focused-visible]' as a styling hook\nSee: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"
+      },
+      {
+       "name": "autofocus",
+       "fieldName": "autofocus",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "A Boolean attribute which, if present, indicates that the user should not be able to edit\nthe value of the input. The difference between disabled and readonly is that read-only\ncontrols can still function, whereas disabled controls generally do not function as\ncontrols until they are enabled.\n(From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly)"
+      },
+      {
+       "name": "label",
+       "fieldName": "label",
+       "type": {
+        "text": "string"
+       },
+       "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used."
+      },
+      {
+       "name": "label-sr-only",
+       "fieldName": "labelSrOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "The label will only be visible for srceen readers when true"
+      },
+      {
+       "name": "help-text",
+       "fieldName": "helpText",
+       "type": {
+        "text": "string"
+       },
+       "description": "The helpt text for the input node.\nWhen no light dom defined via [slot=help-text], this value will be used"
+      },
+      {
+       "name": "type",
+       "fieldName": "type",
+       "type": {
+        "text": "string"
+       },
+       "default": "'text'"
+      },
+      {
+       "name": "placeholder",
+       "fieldName": "placeholder",
+       "type": {
+        "text": "string"
+       },
+       "default": "''"
+      },
+      {
+       "name": "name",
+       "fieldName": "name",
+       "type": {
+        "text": "string"
+       },
+       "default": "''",
+       "description": "The name the element will be registered with to the .formElements collection\nof the parent. Also, it serves as the key of key/value pairs in\n modelValue/serializedValue objects"
+      },
+      {
+       "name": "allow-cross-root-registration",
+       "fieldName": "allowCrossRootRegistration",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "To encourage accessibility best practices, `form-element-register` events\ndo not pierce through shadow roots. This forces the developer to create form groups and fieldsets that automatically allow the creation of accessible relationships in the same dom tree.\nUse this option if you know what you're doing. It will then be possible to nest FormControls\ninside shadow dom. See https://lion.js.org/fundamentals/rationales/accessibility/#shadow-roots-and-accessibility"
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "touched",
+       "fieldName": "touched",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has focused and left(blurred) the field."
+      },
+      {
+       "name": "dirty",
+       "fieldName": "dirty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has changed the value of the field."
+      },
+      {
+       "name": "filled",
+       "fieldName": "filled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when the modelValue is non-empty (see _isEmpty in FormControlMixin)"
+      },
+      {
+       "name": "shows-feedback-for",
+       "fieldName": "showsFeedbackFor",
+       "type": {
+        "text": "ValidationType[]"
+       },
+       "default": "[]",
+       "description": "Based on outcome of feedbackCondition, this array decides what ValidationTypes should be\nshown in validationFeedback, based on meta data like interaction states.\n\nFor styling purposes, it reflects it `[shows-feedback-for=\"error warning\"]`"
+      },
+      {
+       "name": "is-pending",
+       "fieldName": "isPending",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag indicating whether async validation is pending.\nCreates attribute [is-pending] as a styling hook"
+      }
+     ],
+     "definedIn": "exports/define/lion-input-amount-dropdown.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-input-amount",
+     "name": "LionInputAmount",
+     "description": "`LionInputAmount` is a class for an amount custom form element (`<lion-input-amount>`).",
+     "attributes": [
+      {
+       "name": "currency",
+       "fieldName": "currency",
+       "type": {
+        "text": "string | undefined"
+       },
+       "default": "undefined"
+      },
+      {
+       "name": "modelValue",
+       "fieldName": "modelValue"
+      },
+      {
+       "name": "autocomplete",
+       "fieldName": "autocomplete",
+       "type": {
+        "text": "string | undefined"
+       },
+       "default": "undefined",
+       "description": "Delegates this property to input/textarea/select."
+      },
+      {
+       "name": "focused",
+       "fieldName": "focused",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) is focused.\nReflects to attribute '[focused]' as a styling hook"
+      },
+      {
+       "name": "focused-visible",
+       "fieldName": "focusedVisible",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) matches ':focus-visible'\nReflects to attribute '[focused-visible]' as a styling hook\nSee: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"
+      },
+      {
+       "name": "autofocus",
+       "fieldName": "autofocus",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "A Boolean attribute which, if present, indicates that the user should not be able to edit\nthe value of the input. The difference between disabled and readonly is that read-only\ncontrols can still function, whereas disabled controls generally do not function as\ncontrols until they are enabled.\n(From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly)"
+      },
+      {
+       "name": "label",
+       "fieldName": "label",
+       "type": {
+        "text": "string"
+       },
+       "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used."
+      },
+      {
+       "name": "label-sr-only",
+       "fieldName": "labelSrOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "The label will only be visible for srceen readers when true"
+      },
+      {
+       "name": "help-text",
+       "fieldName": "helpText",
+       "type": {
+        "text": "string"
+       },
+       "description": "The helpt text for the input node.\nWhen no light dom defined via [slot=help-text], this value will be used"
+      },
+      {
+       "name": "type",
+       "fieldName": "type",
+       "type": {
+        "text": "string"
+       },
+       "default": "'text'"
+      },
+      {
+       "name": "placeholder",
+       "fieldName": "placeholder",
+       "type": {
+        "text": "string"
+       },
+       "default": "''"
+      },
+      {
+       "name": "name",
+       "fieldName": "name",
+       "type": {
+        "text": "string"
+       },
+       "default": "''",
+       "description": "The name the element will be registered with to the .formElements collection\nof the parent. Also, it serves as the key of key/value pairs in\n modelValue/serializedValue objects"
+      },
+      {
+       "name": "allow-cross-root-registration",
+       "fieldName": "allowCrossRootRegistration",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "To encourage accessibility best practices, `form-element-register` events\ndo not pierce through shadow roots. This forces the developer to create form groups and fieldsets that automatically allow the creation of accessible relationships in the same dom tree.\nUse this option if you know what you're doing. It will then be possible to nest FormControls\ninside shadow dom. See https://lion.js.org/fundamentals/rationales/accessibility/#shadow-roots-and-accessibility"
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "touched",
+       "fieldName": "touched",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has focused and left(blurred) the field."
+      },
+      {
+       "name": "dirty",
+       "fieldName": "dirty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has changed the value of the field."
+      },
+      {
+       "name": "filled",
+       "fieldName": "filled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when the modelValue is non-empty (see _isEmpty in FormControlMixin)"
+      },
+      {
+       "name": "shows-feedback-for",
+       "fieldName": "showsFeedbackFor",
+       "type": {
+        "text": "ValidationType[]"
+       },
+       "default": "[]",
+       "description": "Based on outcome of feedbackCondition, this array decides what ValidationTypes should be\nshown in validationFeedback, based on meta data like interaction states.\n\nFor styling purposes, it reflects it `[shows-feedback-for=\"error warning\"]`"
+      },
+      {
+       "name": "is-pending",
+       "fieldName": "isPending",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag indicating whether async validation is pending.\nCreates attribute [is-pending] as a styling hook"
+      }
+     ],
+     "definedIn": "exports/define/lion-input-amount.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-input-date",
+     "name": "LionInputDate",
+     "description": "`LionInputDate` has a .modelValue of type Date. It parses, formats and validates based\non locale.",
+     "attributes": [
+      {
+       "name": "modelValue",
+       "fieldName": "modelValue"
+      },
+      {
+       "name": "autocomplete",
+       "fieldName": "autocomplete",
+       "type": {
+        "text": "string | undefined"
+       },
+       "default": "undefined",
+       "description": "Delegates this property to input/textarea/select."
+      },
+      {
+       "name": "focused",
+       "fieldName": "focused",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) is focused.\nReflects to attribute '[focused]' as a styling hook"
+      },
+      {
+       "name": "focused-visible",
+       "fieldName": "focusedVisible",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) matches ':focus-visible'\nReflects to attribute '[focused-visible]' as a styling hook\nSee: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"
+      },
+      {
+       "name": "autofocus",
+       "fieldName": "autofocus",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "A Boolean attribute which, if present, indicates that the user should not be able to edit\nthe value of the input. The difference between disabled and readonly is that read-only\ncontrols can still function, whereas disabled controls generally do not function as\ncontrols until they are enabled.\n(From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly)"
+      },
+      {
+       "name": "label",
+       "fieldName": "label",
+       "type": {
+        "text": "string"
+       },
+       "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used."
+      },
+      {
+       "name": "label-sr-only",
+       "fieldName": "labelSrOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "The label will only be visible for srceen readers when true"
+      },
+      {
+       "name": "help-text",
+       "fieldName": "helpText",
+       "type": {
+        "text": "string"
+       },
+       "description": "The helpt text for the input node.\nWhen no light dom defined via [slot=help-text], this value will be used"
+      },
+      {
+       "name": "type",
+       "fieldName": "type",
+       "type": {
+        "text": "string"
+       },
+       "default": "'text'"
+      },
+      {
+       "name": "placeholder",
+       "fieldName": "placeholder",
+       "type": {
+        "text": "string"
+       },
+       "default": "''"
+      },
+      {
+       "name": "name",
+       "fieldName": "name",
+       "type": {
+        "text": "string"
+       },
+       "default": "''",
+       "description": "The name the element will be registered with to the .formElements collection\nof the parent. Also, it serves as the key of key/value pairs in\n modelValue/serializedValue objects"
+      },
+      {
+       "name": "allow-cross-root-registration",
+       "fieldName": "allowCrossRootRegistration",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "To encourage accessibility best practices, `form-element-register` events\ndo not pierce through shadow roots. This forces the developer to create form groups and fieldsets that automatically allow the creation of accessible relationships in the same dom tree.\nUse this option if you know what you're doing. It will then be possible to nest FormControls\ninside shadow dom. See https://lion.js.org/fundamentals/rationales/accessibility/#shadow-roots-and-accessibility"
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "touched",
+       "fieldName": "touched",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has focused and left(blurred) the field."
+      },
+      {
+       "name": "dirty",
+       "fieldName": "dirty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has changed the value of the field."
+      },
+      {
+       "name": "filled",
+       "fieldName": "filled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when the modelValue is non-empty (see _isEmpty in FormControlMixin)"
+      },
+      {
+       "name": "shows-feedback-for",
+       "fieldName": "showsFeedbackFor",
+       "type": {
+        "text": "ValidationType[]"
+       },
+       "default": "[]",
+       "description": "Based on outcome of feedbackCondition, this array decides what ValidationTypes should be\nshown in validationFeedback, based on meta data like interaction states.\n\nFor styling purposes, it reflects it `[shows-feedback-for=\"error warning\"]`"
+      },
+      {
+       "name": "is-pending",
+       "fieldName": "isPending",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag indicating whether async validation is pending.\nCreates attribute [is-pending] as a styling hook"
+      }
+     ],
+     "definedIn": "exports/define/lion-input-date.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-input-datepicker",
+     "name": "LionInputDatepicker",
+     "attributes": [
+      {
+       "name": "calendar-heading",
+       "fieldName": "calendarHeading",
+       "type": {
+        "text": "string"
+       },
+       "description": "The heading to be added on top of the calendar overlay.\nNaming chosen from an Application Developer perspective.\nFor a Subclasser 'calendarOverlayHeading' would be more appropriate."
+      },
+      {
+       "name": "has-arrow",
+       "fieldName": "hasArrow",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "true"
+      },
+      {
+       "name": "modelValue",
+       "fieldName": "modelValue"
+      },
+      {
+       "name": "autocomplete",
+       "fieldName": "autocomplete",
+       "type": {
+        "text": "string | undefined"
+       },
+       "default": "undefined",
+       "description": "Delegates this property to input/textarea/select."
+      },
+      {
+       "name": "focused",
+       "fieldName": "focused",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) is focused.\nReflects to attribute '[focused]' as a styling hook"
+      },
+      {
+       "name": "focused-visible",
+       "fieldName": "focusedVisible",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) matches ':focus-visible'\nReflects to attribute '[focused-visible]' as a styling hook\nSee: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"
+      },
+      {
+       "name": "autofocus",
+       "fieldName": "autofocus",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "A Boolean attribute which, if present, indicates that the user should not be able to edit\nthe value of the input. The difference between disabled and readonly is that read-only\ncontrols can still function, whereas disabled controls generally do not function as\ncontrols until they are enabled.\n(From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly)"
+      },
+      {
+       "name": "label",
+       "fieldName": "label",
+       "type": {
+        "text": "string"
+       },
+       "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used."
+      },
+      {
+       "name": "label-sr-only",
+       "fieldName": "labelSrOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "The label will only be visible for srceen readers when true"
+      },
+      {
+       "name": "help-text",
+       "fieldName": "helpText",
+       "type": {
+        "text": "string"
+       },
+       "description": "The helpt text for the input node.\nWhen no light dom defined via [slot=help-text], this value will be used"
+      },
+      {
+       "name": "type",
+       "fieldName": "type",
+       "type": {
+        "text": "string"
+       },
+       "default": "'text'"
+      },
+      {
+       "name": "placeholder",
+       "fieldName": "placeholder",
+       "type": {
+        "text": "string"
+       },
+       "default": "''"
+      },
+      {
+       "name": "name",
+       "fieldName": "name",
+       "type": {
+        "text": "string"
+       },
+       "default": "''",
+       "description": "The name the element will be registered with to the .formElements collection\nof the parent. Also, it serves as the key of key/value pairs in\n modelValue/serializedValue objects"
+      },
+      {
+       "name": "allow-cross-root-registration",
+       "fieldName": "allowCrossRootRegistration",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "To encourage accessibility best practices, `form-element-register` events\ndo not pierce through shadow roots. This forces the developer to create form groups and fieldsets that automatically allow the creation of accessible relationships in the same dom tree.\nUse this option if you know what you're doing. It will then be possible to nest FormControls\ninside shadow dom. See https://lion.js.org/fundamentals/rationales/accessibility/#shadow-roots-and-accessibility"
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "touched",
+       "fieldName": "touched",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has focused and left(blurred) the field."
+      },
+      {
+       "name": "dirty",
+       "fieldName": "dirty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has changed the value of the field."
+      },
+      {
+       "name": "filled",
+       "fieldName": "filled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when the modelValue is non-empty (see _isEmpty in FormControlMixin)"
+      },
+      {
+       "name": "shows-feedback-for",
+       "fieldName": "showsFeedbackFor",
+       "type": {
+        "text": "ValidationType[]"
+       },
+       "default": "[]",
+       "description": "Based on outcome of feedbackCondition, this array decides what ValidationTypes should be\nshown in validationFeedback, based on meta data like interaction states.\n\nFor styling purposes, it reflects it `[shows-feedback-for=\"error warning\"]`"
+      },
+      {
+       "name": "is-pending",
+       "fieldName": "isPending",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag indicating whether async validation is pending.\nCreates attribute [is-pending] as a styling hook"
+      }
+     ],
+     "definedIn": "exports/define/lion-input-datepicker.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-input-email",
+     "name": "LionInputEmail",
+     "description": "LionInputEmail: extension of lion-input",
+     "attributes": [
+      {
+       "name": "autocomplete",
+       "fieldName": "autocomplete",
+       "type": {
+        "text": "string | undefined"
+       },
+       "default": "undefined",
+       "description": "Delegates this property to input/textarea/select."
+      },
+      {
+       "name": "focused",
+       "fieldName": "focused",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) is focused.\nReflects to attribute '[focused]' as a styling hook"
+      },
+      {
+       "name": "focused-visible",
+       "fieldName": "focusedVisible",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) matches ':focus-visible'\nReflects to attribute '[focused-visible]' as a styling hook\nSee: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"
+      },
+      {
+       "name": "autofocus",
+       "fieldName": "autofocus",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "A Boolean attribute which, if present, indicates that the user should not be able to edit\nthe value of the input. The difference between disabled and readonly is that read-only\ncontrols can still function, whereas disabled controls generally do not function as\ncontrols until they are enabled.\n(From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly)"
+      },
+      {
+       "name": "label",
+       "fieldName": "label",
+       "type": {
+        "text": "string"
+       },
+       "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used."
+      },
+      {
+       "name": "label-sr-only",
+       "fieldName": "labelSrOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "The label will only be visible for srceen readers when true"
+      },
+      {
+       "name": "help-text",
+       "fieldName": "helpText",
+       "type": {
+        "text": "string"
+       },
+       "description": "The helpt text for the input node.\nWhen no light dom defined via [slot=help-text], this value will be used"
+      },
+      {
+       "name": "type",
+       "fieldName": "type",
+       "type": {
+        "text": "string"
+       },
+       "default": "'text'"
+      },
+      {
+       "name": "placeholder",
+       "fieldName": "placeholder",
+       "type": {
+        "text": "string"
+       },
+       "default": "''"
+      },
+      {
+       "name": "name",
+       "fieldName": "name",
+       "type": {
+        "text": "string"
+       },
+       "default": "''",
+       "description": "The name the element will be registered with to the .formElements collection\nof the parent. Also, it serves as the key of key/value pairs in\n modelValue/serializedValue objects"
+      },
+      {
+       "name": "allow-cross-root-registration",
+       "fieldName": "allowCrossRootRegistration",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "To encourage accessibility best practices, `form-element-register` events\ndo not pierce through shadow roots. This forces the developer to create form groups and fieldsets that automatically allow the creation of accessible relationships in the same dom tree.\nUse this option if you know what you're doing. It will then be possible to nest FormControls\ninside shadow dom. See https://lion.js.org/fundamentals/rationales/accessibility/#shadow-roots-and-accessibility"
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "touched",
+       "fieldName": "touched",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has focused and left(blurred) the field."
+      },
+      {
+       "name": "dirty",
+       "fieldName": "dirty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has changed the value of the field."
+      },
+      {
+       "name": "filled",
+       "fieldName": "filled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when the modelValue is non-empty (see _isEmpty in FormControlMixin)"
+      },
+      {
+       "name": "shows-feedback-for",
+       "fieldName": "showsFeedbackFor",
+       "type": {
+        "text": "ValidationType[]"
+       },
+       "default": "[]",
+       "description": "Based on outcome of feedbackCondition, this array decides what ValidationTypes should be\nshown in validationFeedback, based on meta data like interaction states.\n\nFor styling purposes, it reflects it `[shows-feedback-for=\"error warning\"]`"
+      },
+      {
+       "name": "is-pending",
+       "fieldName": "isPending",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag indicating whether async validation is pending.\nCreates attribute [is-pending] as a styling hook"
+      }
+     ],
+     "definedIn": "exports/define/lion-input-email.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-input-file",
+     "name": "LionInputFile",
+     "description": "LionInputFile: A file input component\nThis component allows users to select files, displays selected files, and handles file uploads.",
+     "attributes": [
+      {
+       "name": "accept",
+       "fieldName": "accept",
+       "type": {
+        "text": "string"
+       },
+       "default": "''"
+      },
+      {
+       "name": "multiple",
+       "fieldName": "multiple",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "button-label",
+       "fieldName": "buttonLabel",
+       "type": {
+        "text": "string"
+       },
+       "default": "''",
+       "description": "The label of the button"
+      },
+      {
+       "name": "max-file-size",
+       "fieldName": "maxFileSize",
+       "type": {
+        "text": "number"
+       },
+       "default": "MAX_FILE_SIZE"
+      },
+      {
+       "name": "enable-drop-zone",
+       "fieldName": "enableDropZone",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "upload-on-select",
+       "fieldName": "uploadOnSelect",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "is-dragging",
+       "fieldName": "isDragging",
+       "type": {
+        "text": "boolean"
+       }
+      },
+      {
+       "name": "uploadResponse",
+       "fieldName": "uploadResponse",
+       "type": {
+        "text": "UploadResponse[]"
+       },
+       "default": "[]"
+      },
+      {
+       "name": "_selectedFilesMetaData",
+       "fieldName": "_selectedFilesMetaData",
+       "type": {
+        "text": "InputFile[]"
+       },
+       "default": "[]"
+      },
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "A Boolean attribute which, if present, indicates that the user should not be able to edit\nthe value of the input. The difference between disabled and readonly is that read-only\ncontrols can still function, whereas disabled controls generally do not function as\ncontrols until they are enabled.\n(From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly)"
+      },
+      {
+       "name": "label",
+       "fieldName": "label",
+       "type": {
+        "text": "string"
+       },
+       "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used."
+      },
+      {
+       "name": "label-sr-only",
+       "fieldName": "labelSrOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "The label will only be visible for srceen readers when true"
+      },
+      {
+       "name": "help-text",
+       "fieldName": "helpText",
+       "type": {
+        "text": "string"
+       },
+       "description": "The helpt text for the input node.\nWhen no light dom defined via [slot=help-text], this value will be used"
+      },
+      {
+       "name": "name",
+       "fieldName": "name",
+       "type": {
+        "text": "string"
+       },
+       "default": "''",
+       "description": "The name the element will be registered with to the .formElements collection\nof the parent. Also, it serves as the key of key/value pairs in\n modelValue/serializedValue objects"
+      },
+      {
+       "name": "allow-cross-root-registration",
+       "fieldName": "allowCrossRootRegistration",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "To encourage accessibility best practices, `form-element-register` events\ndo not pierce through shadow roots. This forces the developer to create form groups and fieldsets that automatically allow the creation of accessible relationships in the same dom tree.\nUse this option if you know what you're doing. It will then be possible to nest FormControls\ninside shadow dom. See https://lion.js.org/fundamentals/rationales/accessibility/#shadow-roots-and-accessibility"
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "touched",
+       "fieldName": "touched",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has focused and left(blurred) the field."
+      },
+      {
+       "name": "dirty",
+       "fieldName": "dirty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has changed the value of the field."
+      },
+      {
+       "name": "filled",
+       "fieldName": "filled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when the modelValue is non-empty (see _isEmpty in FormControlMixin)"
+      },
+      {
+       "name": "focused",
+       "fieldName": "focused",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) is focused.\nReflects to attribute '[focused]' as a styling hook"
+      },
+      {
+       "name": "focused-visible",
+       "fieldName": "focusedVisible",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) matches ':focus-visible'\nReflects to attribute '[focused-visible]' as a styling hook\nSee: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"
+      },
+      {
+       "name": "autofocus",
+       "fieldName": "autofocus",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "shows-feedback-for",
+       "fieldName": "showsFeedbackFor",
+       "type": {
+        "text": "ValidationType[]"
+       },
+       "default": "[]",
+       "description": "Based on outcome of feedbackCondition, this array decides what ValidationTypes should be\nshown in validationFeedback, based on meta data like interaction states.\n\nFor styling purposes, it reflects it `[shows-feedback-for=\"error warning\"]`"
+      },
+      {
+       "name": "is-pending",
+       "fieldName": "isPending",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag indicating whether async validation is pending.\nCreates attribute [is-pending] as a styling hook"
+      }
+     ],
+     "slots": [
+      {
+       "description": "[private] The button to open the file dialog",
+       "name": "file-select-button"
+      },
+      {
+       "description": "[private] The list of selected files",
+       "name": "selected-file-list"
+      }
+     ],
+     "definedIn": "exports/define/lion-input-file.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-selected-file-list",
+     "name": "LionSelectedFileList",
+     "attributes": [
+      {
+       "name": "fileList",
+       "fieldName": "fileList",
+       "type": {
+        "text": "InputFile[]"
+       },
+       "default": "[]"
+      },
+      {
+       "name": "multiple",
+       "fieldName": "multiple",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      }
+     ],
+     "definedIn": "exports/define/lion-selected-file-list.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-input-iban",
+     "name": "LionInputIban",
+     "description": "`LionInputIban` is a class for an IBAN custom form element (`<lion-input-iban>`).",
+     "attributes": [
+      {
+       "name": "autocomplete",
+       "fieldName": "autocomplete",
+       "type": {
+        "text": "string | undefined"
+       },
+       "default": "undefined",
+       "description": "Delegates this property to input/textarea/select."
+      },
+      {
+       "name": "focused",
+       "fieldName": "focused",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) is focused.\nReflects to attribute '[focused]' as a styling hook"
+      },
+      {
+       "name": "focused-visible",
+       "fieldName": "focusedVisible",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) matches ':focus-visible'\nReflects to attribute '[focused-visible]' as a styling hook\nSee: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"
+      },
+      {
+       "name": "autofocus",
+       "fieldName": "autofocus",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "A Boolean attribute which, if present, indicates that the user should not be able to edit\nthe value of the input. The difference between disabled and readonly is that read-only\ncontrols can still function, whereas disabled controls generally do not function as\ncontrols until they are enabled.\n(From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly)"
+      },
+      {
+       "name": "label",
+       "fieldName": "label",
+       "type": {
+        "text": "string"
+       },
+       "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used."
+      },
+      {
+       "name": "label-sr-only",
+       "fieldName": "labelSrOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "The label will only be visible for srceen readers when true"
+      },
+      {
+       "name": "help-text",
+       "fieldName": "helpText",
+       "type": {
+        "text": "string"
+       },
+       "description": "The helpt text for the input node.\nWhen no light dom defined via [slot=help-text], this value will be used"
+      },
+      {
+       "name": "type",
+       "fieldName": "type",
+       "type": {
+        "text": "string"
+       },
+       "default": "'text'"
+      },
+      {
+       "name": "placeholder",
+       "fieldName": "placeholder",
+       "type": {
+        "text": "string"
+       },
+       "default": "''"
+      },
+      {
+       "name": "name",
+       "fieldName": "name",
+       "type": {
+        "text": "string"
+       },
+       "default": "''",
+       "description": "The name the element will be registered with to the .formElements collection\nof the parent. Also, it serves as the key of key/value pairs in\n modelValue/serializedValue objects"
+      },
+      {
+       "name": "allow-cross-root-registration",
+       "fieldName": "allowCrossRootRegistration",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "To encourage accessibility best practices, `form-element-register` events\ndo not pierce through shadow roots. This forces the developer to create form groups and fieldsets that automatically allow the creation of accessible relationships in the same dom tree.\nUse this option if you know what you're doing. It will then be possible to nest FormControls\ninside shadow dom. See https://lion.js.org/fundamentals/rationales/accessibility/#shadow-roots-and-accessibility"
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "touched",
+       "fieldName": "touched",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has focused and left(blurred) the field."
+      },
+      {
+       "name": "dirty",
+       "fieldName": "dirty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has changed the value of the field."
+      },
+      {
+       "name": "filled",
+       "fieldName": "filled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when the modelValue is non-empty (see _isEmpty in FormControlMixin)"
+      },
+      {
+       "name": "shows-feedback-for",
+       "fieldName": "showsFeedbackFor",
+       "type": {
+        "text": "ValidationType[]"
+       },
+       "default": "[]",
+       "description": "Based on outcome of feedbackCondition, this array decides what ValidationTypes should be\nshown in validationFeedback, based on meta data like interaction states.\n\nFor styling purposes, it reflects it `[shows-feedback-for=\"error warning\"]`"
+      },
+      {
+       "name": "is-pending",
+       "fieldName": "isPending",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag indicating whether async validation is pending.\nCreates attribute [is-pending] as a styling hook"
+      }
+     ],
+     "definedIn": "exports/define/lion-input-iban.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-input-range",
+     "name": "LionInputRange",
+     "description": "LionInputRange: extension of lion-input.",
+     "attributes": [
+      {
+       "name": "min",
+       "fieldName": "min",
+       "type": {
+        "text": "number"
+       },
+       "default": "Infinity"
+      },
+      {
+       "name": "max",
+       "fieldName": "max",
+       "type": {
+        "text": "number"
+       },
+       "default": "Infinity"
+      },
+      {
+       "name": "unit",
+       "fieldName": "unit",
+       "type": {
+        "text": "string"
+       },
+       "default": "''"
+      },
+      {
+       "name": "step",
+       "fieldName": "step",
+       "type": {
+        "text": "number"
+       },
+       "default": "1"
+      },
+      {
+       "name": "no-min-max-labels",
+       "fieldName": "noMinMaxLabels",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "min-label",
+       "fieldName": "minLabel",
+       "type": {
+        "text": "string"
+       },
+       "default": "''"
+      },
+      {
+       "name": "max-label",
+       "fieldName": "maxLabel",
+       "type": {
+        "text": "string"
+       },
+       "default": "''"
+      },
+      {
+       "name": "autocomplete",
+       "fieldName": "autocomplete",
+       "type": {
+        "text": "string | undefined"
+       },
+       "default": "undefined",
+       "description": "Delegates this property to input/textarea/select."
+      },
+      {
+       "name": "focused",
+       "fieldName": "focused",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) is focused.\nReflects to attribute '[focused]' as a styling hook"
+      },
+      {
+       "name": "focused-visible",
+       "fieldName": "focusedVisible",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) matches ':focus-visible'\nReflects to attribute '[focused-visible]' as a styling hook\nSee: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"
+      },
+      {
+       "name": "autofocus",
+       "fieldName": "autofocus",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "A Boolean attribute which, if present, indicates that the user should not be able to edit\nthe value of the input. The difference between disabled and readonly is that read-only\ncontrols can still function, whereas disabled controls generally do not function as\ncontrols until they are enabled.\n(From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly)"
+      },
+      {
+       "name": "label",
+       "fieldName": "label",
+       "type": {
+        "text": "string"
+       },
+       "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used."
+      },
+      {
+       "name": "label-sr-only",
+       "fieldName": "labelSrOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "The label will only be visible for srceen readers when true"
+      },
+      {
+       "name": "help-text",
+       "fieldName": "helpText",
+       "type": {
+        "text": "string"
+       },
+       "description": "The helpt text for the input node.\nWhen no light dom defined via [slot=help-text], this value will be used"
+      },
+      {
+       "name": "type",
+       "fieldName": "type",
+       "type": {
+        "text": "string"
+       },
+       "default": "'text'"
+      },
+      {
+       "name": "placeholder",
+       "fieldName": "placeholder",
+       "type": {
+        "text": "string"
+       },
+       "default": "''"
+      },
+      {
+       "name": "name",
+       "fieldName": "name",
+       "type": {
+        "text": "string"
+       },
+       "default": "''",
+       "description": "The name the element will be registered with to the .formElements collection\nof the parent. Also, it serves as the key of key/value pairs in\n modelValue/serializedValue objects"
+      },
+      {
+       "name": "allow-cross-root-registration",
+       "fieldName": "allowCrossRootRegistration",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "To encourage accessibility best practices, `form-element-register` events\ndo not pierce through shadow roots. This forces the developer to create form groups and fieldsets that automatically allow the creation of accessible relationships in the same dom tree.\nUse this option if you know what you're doing. It will then be possible to nest FormControls\ninside shadow dom. See https://lion.js.org/fundamentals/rationales/accessibility/#shadow-roots-and-accessibility"
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "touched",
+       "fieldName": "touched",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has focused and left(blurred) the field."
+      },
+      {
+       "name": "dirty",
+       "fieldName": "dirty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has changed the value of the field."
+      },
+      {
+       "name": "filled",
+       "fieldName": "filled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when the modelValue is non-empty (see _isEmpty in FormControlMixin)"
+      },
+      {
+       "name": "shows-feedback-for",
+       "fieldName": "showsFeedbackFor",
+       "type": {
+        "text": "ValidationType[]"
+       },
+       "default": "[]",
+       "description": "Based on outcome of feedbackCondition, this array decides what ValidationTypes should be\nshown in validationFeedback, based on meta data like interaction states.\n\nFor styling purposes, it reflects it `[shows-feedback-for=\"error warning\"]`"
+      },
+      {
+       "name": "is-pending",
+       "fieldName": "isPending",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag indicating whether async validation is pending.\nCreates attribute [is-pending] as a styling hook"
+      }
+     ],
+     "definedIn": "exports/define/lion-input-range.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-input-stepper",
+     "name": "LionInputStepper",
+     "description": "`LionInputStepper` is a class for custom input-stepper element (`<lion-input-stepper>` web component).",
+     "attributes": [
+      {
+       "name": "min",
+       "fieldName": "min",
+       "type": {
+        "text": "number"
+       },
+       "default": "Infinity"
+      },
+      {
+       "name": "max",
+       "fieldName": "max",
+       "type": {
+        "text": "number"
+       },
+       "default": "Infinity"
+      },
+      {
+       "name": "valueTextMapping",
+       "fieldName": "valueTextMapping",
+       "type": {
+        "text": "{[key: number]: string}"
+       },
+       "default": "{}",
+       "description": "The aria-valuetext attribute defines the human-readable text alternative of aria-valuenow."
+      },
+      {
+       "name": "step",
+       "fieldName": "step",
+       "type": {
+        "text": "number"
+       },
+       "default": "1"
+      },
+      {
+       "name": "autocomplete",
+       "fieldName": "autocomplete",
+       "type": {
+        "text": "string | undefined"
+       },
+       "default": "undefined",
+       "description": "Delegates this property to input/textarea/select."
+      },
+      {
+       "name": "focused",
+       "fieldName": "focused",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) is focused.\nReflects to attribute '[focused]' as a styling hook"
+      },
+      {
+       "name": "focused-visible",
+       "fieldName": "focusedVisible",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) matches ':focus-visible'\nReflects to attribute '[focused-visible]' as a styling hook\nSee: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"
+      },
+      {
+       "name": "autofocus",
+       "fieldName": "autofocus",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "A Boolean attribute which, if present, indicates that the user should not be able to edit\nthe value of the input. The difference between disabled and readonly is that read-only\ncontrols can still function, whereas disabled controls generally do not function as\ncontrols until they are enabled.\n(From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly)"
+      },
+      {
+       "name": "label",
+       "fieldName": "label",
+       "type": {
+        "text": "string"
+       },
+       "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used."
+      },
+      {
+       "name": "label-sr-only",
+       "fieldName": "labelSrOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "The label will only be visible for srceen readers when true"
+      },
+      {
+       "name": "help-text",
+       "fieldName": "helpText",
+       "type": {
+        "text": "string"
+       },
+       "description": "The helpt text for the input node.\nWhen no light dom defined via [slot=help-text], this value will be used"
+      },
+      {
+       "name": "type",
+       "fieldName": "type",
+       "type": {
+        "text": "string"
+       },
+       "default": "'text'"
+      },
+      {
+       "name": "placeholder",
+       "fieldName": "placeholder",
+       "type": {
+        "text": "string"
+       },
+       "default": "''"
+      },
+      {
+       "name": "name",
+       "fieldName": "name",
+       "type": {
+        "text": "string"
+       },
+       "default": "''",
+       "description": "The name the element will be registered with to the .formElements collection\nof the parent. Also, it serves as the key of key/value pairs in\n modelValue/serializedValue objects"
+      },
+      {
+       "name": "allow-cross-root-registration",
+       "fieldName": "allowCrossRootRegistration",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "To encourage accessibility best practices, `form-element-register` events\ndo not pierce through shadow roots. This forces the developer to create form groups and fieldsets that automatically allow the creation of accessible relationships in the same dom tree.\nUse this option if you know what you're doing. It will then be possible to nest FormControls\ninside shadow dom. See https://lion.js.org/fundamentals/rationales/accessibility/#shadow-roots-and-accessibility"
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "touched",
+       "fieldName": "touched",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has focused and left(blurred) the field."
+      },
+      {
+       "name": "dirty",
+       "fieldName": "dirty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has changed the value of the field."
+      },
+      {
+       "name": "filled",
+       "fieldName": "filled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when the modelValue is non-empty (see _isEmpty in FormControlMixin)"
+      },
+      {
+       "name": "shows-feedback-for",
+       "fieldName": "showsFeedbackFor",
+       "type": {
+        "text": "ValidationType[]"
+       },
+       "default": "[]",
+       "description": "Based on outcome of feedbackCondition, this array decides what ValidationTypes should be\nshown in validationFeedback, based on meta data like interaction states.\n\nFor styling purposes, it reflects it `[shows-feedback-for=\"error warning\"]`"
+      },
+      {
+       "name": "is-pending",
+       "fieldName": "isPending",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag indicating whether async validation is pending.\nCreates attribute [is-pending] as a styling hook"
+      }
+     ],
+     "definedIn": "exports/define/lion-input-stepper.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-input-tel-dropdown",
+     "name": "LionInputTelDropdown",
+     "description": "LionInputTelDropdown renders a dropdown like element next to the text field, inside the\nprefix slot. This could be a LionSelect, a LionSelectRich or a native select.\nBy default, the native `<select>` element is used for this, so that it's as lightweight as\npossible. Also, it doesn't need to be a `FormControl`, because it's purely a helper element\nto provide better UX: the modelValue (the text field) contains all needed info, since it's in\n`e164` format that contains all info (both region code and national phone number).",
+     "attributes": [
+      {
+       "name": "allowedRegions",
+       "fieldName": "allowedRegions",
+       "type": {
+        "text": "RegionCode[]"
+       },
+       "default": "[]",
+       "description": "The regions that should be considered when international phone numbers are detected.\n(when not configured, all regions worldwide will be considered)"
+      },
+      {
+       "name": "format-strategy",
+       "fieldName": "formatStrategy",
+       "type": {
+        "text": "PhoneNumberFormat"
+       },
+       "default": "'international'",
+       "description": "Determines what the formatter output should look like.\nFormatting strategies as provided by google-libphonenumber\nSee: https://www.npmjs.com/package/google-libphonenumber"
+      },
+      {
+       "name": "format-country-code-style",
+       "fieldName": "formatCountryCodeStyle",
+       "type": {
+        "text": "string"
+       },
+       "default": "'default'",
+       "description": "Extra styling of the format strategy\ndefault | parentheses"
+      },
+      {
+       "name": "activeRegion",
+       "fieldName": "activeRegion",
+       "type": {
+        "text": "string"
+       },
+       "description": "Currently active region based on:\n1. allowed regions: get the region from configured allowed regions (if one entry)\n2. user input: try to derive active region from user input\n3. locale: try to get the region from locale (`html[lang]` attribute)"
+      },
+      {
+       "name": "preferredRegions",
+       "fieldName": "preferredRegions",
+       "type": {
+        "text": "RegionCode[]"
+       },
+       "default": "[]",
+       "description": "Regions that will be shown on top of the dropdown"
+      },
+      {
+       "name": "_phoneUtil",
+       "fieldName": "_phoneUtil",
+       "type": {
+        "text": "AwesomePhoneNumber|null"
+       }
+      },
+      {
+       "name": "autocomplete",
+       "fieldName": "autocomplete",
+       "type": {
+        "text": "string | undefined"
+       },
+       "default": "undefined",
+       "description": "Delegates this property to input/textarea/select."
+      },
+      {
+       "name": "focused",
+       "fieldName": "focused",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) is focused.\nReflects to attribute '[focused]' as a styling hook"
+      },
+      {
+       "name": "focused-visible",
+       "fieldName": "focusedVisible",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) matches ':focus-visible'\nReflects to attribute '[focused-visible]' as a styling hook\nSee: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"
+      },
+      {
+       "name": "autofocus",
+       "fieldName": "autofocus",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "A Boolean attribute which, if present, indicates that the user should not be able to edit\nthe value of the input. The difference between disabled and readonly is that read-only\ncontrols can still function, whereas disabled controls generally do not function as\ncontrols until they are enabled.\n(From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly)"
+      },
+      {
+       "name": "label",
+       "fieldName": "label",
+       "type": {
+        "text": "string"
+       },
+       "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used."
+      },
+      {
+       "name": "label-sr-only",
+       "fieldName": "labelSrOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "The label will only be visible for srceen readers when true"
+      },
+      {
+       "name": "help-text",
+       "fieldName": "helpText",
+       "type": {
+        "text": "string"
+       },
+       "description": "The helpt text for the input node.\nWhen no light dom defined via [slot=help-text], this value will be used"
+      },
+      {
+       "name": "type",
+       "fieldName": "type",
+       "type": {
+        "text": "string"
+       },
+       "default": "'text'"
+      },
+      {
+       "name": "placeholder",
+       "fieldName": "placeholder",
+       "type": {
+        "text": "string"
+       },
+       "default": "''"
+      },
+      {
+       "name": "name",
+       "fieldName": "name",
+       "type": {
+        "text": "string"
+       },
+       "default": "''",
+       "description": "The name the element will be registered with to the .formElements collection\nof the parent. Also, it serves as the key of key/value pairs in\n modelValue/serializedValue objects"
+      },
+      {
+       "name": "allow-cross-root-registration",
+       "fieldName": "allowCrossRootRegistration",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "To encourage accessibility best practices, `form-element-register` events\ndo not pierce through shadow roots. This forces the developer to create form groups and fieldsets that automatically allow the creation of accessible relationships in the same dom tree.\nUse this option if you know what you're doing. It will then be possible to nest FormControls\ninside shadow dom. See https://lion.js.org/fundamentals/rationales/accessibility/#shadow-roots-and-accessibility"
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "touched",
+       "fieldName": "touched",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has focused and left(blurred) the field."
+      },
+      {
+       "name": "dirty",
+       "fieldName": "dirty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has changed the value of the field."
+      },
+      {
+       "name": "filled",
+       "fieldName": "filled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when the modelValue is non-empty (see _isEmpty in FormControlMixin)"
+      },
+      {
+       "name": "shows-feedback-for",
+       "fieldName": "showsFeedbackFor",
+       "type": {
+        "text": "ValidationType[]"
+       },
+       "default": "[]",
+       "description": "Based on outcome of feedbackCondition, this array decides what ValidationTypes should be\nshown in validationFeedback, based on meta data like interaction states.\n\nFor styling purposes, it reflects it `[shows-feedback-for=\"error warning\"]`"
+      },
+      {
+       "name": "is-pending",
+       "fieldName": "isPending",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag indicating whether async validation is pending.\nCreates attribute [is-pending] as a styling hook"
+      }
+     ],
+     "definedIn": "exports/define/lion-input-tel-dropdown.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-input-tel",
+     "name": "LionInputTel",
+     "attributes": [
+      {
+       "name": "allowedRegions",
+       "fieldName": "allowedRegions",
+       "type": {
+        "text": "RegionCode[]"
+       },
+       "default": "[]",
+       "description": "The regions that should be considered when international phone numbers are detected.\n(when not configured, all regions worldwide will be considered)"
+      },
+      {
+       "name": "format-strategy",
+       "fieldName": "formatStrategy",
+       "type": {
+        "text": "PhoneNumberFormat"
+       },
+       "default": "'international'",
+       "description": "Determines what the formatter output should look like.\nFormatting strategies as provided by google-libphonenumber\nSee: https://www.npmjs.com/package/google-libphonenumber"
+      },
+      {
+       "name": "format-country-code-style",
+       "fieldName": "formatCountryCodeStyle",
+       "type": {
+        "text": "string"
+       },
+       "default": "'default'",
+       "description": "Extra styling of the format strategy\ndefault | parentheses"
+      },
+      {
+       "name": "activeRegion",
+       "fieldName": "activeRegion",
+       "type": {
+        "text": "string"
+       },
+       "description": "Currently active region based on:\n1. allowed regions: get the region from configured allowed regions (if one entry)\n2. user input: try to derive active region from user input\n3. locale: try to get the region from locale (`html[lang]` attribute)"
+      },
+      {
+       "name": "preferredRegions",
+       "fieldName": "preferredRegions",
+       "type": {
+        "text": "RegionCode[]"
+       },
+       "default": "[]",
+       "description": "Regions that will be shown on top of the dropdown"
+      },
+      {
+       "name": "_phoneUtil",
+       "fieldName": "_phoneUtil",
+       "type": {
+        "text": "AwesomePhoneNumber|null"
+       }
+      },
+      {
+       "name": "autocomplete",
+       "fieldName": "autocomplete",
+       "type": {
+        "text": "string | undefined"
+       },
+       "default": "undefined",
+       "description": "Delegates this property to input/textarea/select."
+      },
+      {
+       "name": "focused",
+       "fieldName": "focused",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) is focused.\nReflects to attribute '[focused]' as a styling hook"
+      },
+      {
+       "name": "focused-visible",
+       "fieldName": "focusedVisible",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) matches ':focus-visible'\nReflects to attribute '[focused-visible]' as a styling hook\nSee: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"
+      },
+      {
+       "name": "autofocus",
+       "fieldName": "autofocus",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "A Boolean attribute which, if present, indicates that the user should not be able to edit\nthe value of the input. The difference between disabled and readonly is that read-only\ncontrols can still function, whereas disabled controls generally do not function as\ncontrols until they are enabled.\n(From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly)"
+      },
+      {
+       "name": "label",
+       "fieldName": "label",
+       "type": {
+        "text": "string"
+       },
+       "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used."
+      },
+      {
+       "name": "label-sr-only",
+       "fieldName": "labelSrOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "The label will only be visible for srceen readers when true"
+      },
+      {
+       "name": "help-text",
+       "fieldName": "helpText",
+       "type": {
+        "text": "string"
+       },
+       "description": "The helpt text for the input node.\nWhen no light dom defined via [slot=help-text], this value will be used"
+      },
+      {
+       "name": "type",
+       "fieldName": "type",
+       "type": {
+        "text": "string"
+       },
+       "default": "'text'"
+      },
+      {
+       "name": "placeholder",
+       "fieldName": "placeholder",
+       "type": {
+        "text": "string"
+       },
+       "default": "''"
+      },
+      {
+       "name": "name",
+       "fieldName": "name",
+       "type": {
+        "text": "string"
+       },
+       "default": "''",
+       "description": "The name the element will be registered with to the .formElements collection\nof the parent. Also, it serves as the key of key/value pairs in\n modelValue/serializedValue objects"
+      },
+      {
+       "name": "allow-cross-root-registration",
+       "fieldName": "allowCrossRootRegistration",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "To encourage accessibility best practices, `form-element-register` events\ndo not pierce through shadow roots. This forces the developer to create form groups and fieldsets that automatically allow the creation of accessible relationships in the same dom tree.\nUse this option if you know what you're doing. It will then be possible to nest FormControls\ninside shadow dom. See https://lion.js.org/fundamentals/rationales/accessibility/#shadow-roots-and-accessibility"
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "touched",
+       "fieldName": "touched",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has focused and left(blurred) the field."
+      },
+      {
+       "name": "dirty",
+       "fieldName": "dirty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has changed the value of the field."
+      },
+      {
+       "name": "filled",
+       "fieldName": "filled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when the modelValue is non-empty (see _isEmpty in FormControlMixin)"
+      },
+      {
+       "name": "shows-feedback-for",
+       "fieldName": "showsFeedbackFor",
+       "type": {
+        "text": "ValidationType[]"
+       },
+       "default": "[]",
+       "description": "Based on outcome of feedbackCondition, this array decides what ValidationTypes should be\nshown in validationFeedback, based on meta data like interaction states.\n\nFor styling purposes, it reflects it `[shows-feedback-for=\"error warning\"]`"
+      },
+      {
+       "name": "is-pending",
+       "fieldName": "isPending",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag indicating whether async validation is pending.\nCreates attribute [is-pending] as a styling hook"
+      }
+     ],
+     "definedIn": "exports/define/lion-input-tel.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-input",
+     "name": "LionInput",
+     "description": "LionInput: extension of lion-field with native input element in place and user friendly API.",
+     "attributes": [
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "A Boolean attribute which, if present, indicates that the user should not be able to edit\nthe value of the input. The difference between disabled and readonly is that read-only\ncontrols can still function, whereas disabled controls generally do not function as\ncontrols until they are enabled.\n\n(From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly)"
+      },
+      {
+       "name": "type",
+       "fieldName": "type",
+       "type": {
+        "text": "string"
+       },
+       "default": "'text'"
+      },
+      {
+       "name": "placeholder",
+       "fieldName": "placeholder",
+       "type": {
+        "text": "string"
+       },
+       "default": "''"
+      },
+      {
+       "name": "autocomplete",
+       "fieldName": "autocomplete",
+       "type": {
+        "text": "string | undefined"
+       },
+       "default": "undefined",
+       "description": "Delegates this property to input/textarea/select."
+      },
+      {
+       "name": "focused",
+       "fieldName": "focused",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) is focused.\nReflects to attribute '[focused]' as a styling hook"
+      },
+      {
+       "name": "focused-visible",
+       "fieldName": "focusedVisible",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) matches ':focus-visible'\nReflects to attribute '[focused-visible]' as a styling hook\nSee: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"
+      },
+      {
+       "name": "autofocus",
+       "fieldName": "autofocus",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "label",
+       "fieldName": "label",
+       "type": {
+        "text": "string"
+       },
+       "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used."
+      },
+      {
+       "name": "label-sr-only",
+       "fieldName": "labelSrOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "The label will only be visible for srceen readers when true"
+      },
+      {
+       "name": "help-text",
+       "fieldName": "helpText",
+       "type": {
+        "text": "string"
+       },
+       "description": "The helpt text for the input node.\nWhen no light dom defined via [slot=help-text], this value will be used"
+      },
+      {
+       "name": "name",
+       "fieldName": "name",
+       "type": {
+        "text": "string"
+       },
+       "default": "''",
+       "description": "The name the element will be registered with to the .formElements collection\nof the parent. Also, it serves as the key of key/value pairs in\n modelValue/serializedValue objects"
+      },
+      {
+       "name": "allow-cross-root-registration",
+       "fieldName": "allowCrossRootRegistration",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "To encourage accessibility best practices, `form-element-register` events\ndo not pierce through shadow roots. This forces the developer to create form groups and fieldsets that automatically allow the creation of accessible relationships in the same dom tree.\nUse this option if you know what you're doing. It will then be possible to nest FormControls\ninside shadow dom. See https://lion.js.org/fundamentals/rationales/accessibility/#shadow-roots-and-accessibility"
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "touched",
+       "fieldName": "touched",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has focused and left(blurred) the field."
+      },
+      {
+       "name": "dirty",
+       "fieldName": "dirty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has changed the value of the field."
+      },
+      {
+       "name": "filled",
+       "fieldName": "filled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when the modelValue is non-empty (see _isEmpty in FormControlMixin)"
+      },
+      {
+       "name": "shows-feedback-for",
+       "fieldName": "showsFeedbackFor",
+       "type": {
+        "text": "ValidationType[]"
+       },
+       "default": "[]",
+       "description": "Based on outcome of feedbackCondition, this array decides what ValidationTypes should be\nshown in validationFeedback, based on meta data like interaction states.\n\nFor styling purposes, it reflects it `[shows-feedback-for=\"error warning\"]`"
+      },
+      {
+       "name": "is-pending",
+       "fieldName": "isPending",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag indicating whether async validation is pending.\nCreates attribute [is-pending] as a styling hook"
+      }
+     ],
+     "definedIn": "exports/define/lion-input.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-listbox",
+     "name": "LionListbox",
+     "description": "LionListbox: implements the wai-aria listbox design pattern and integrates it as a Lion\nFormControl",
+     "attributes": [
+      {
+       "name": "orientation",
+       "fieldName": "orientation",
+       "type": {
+        "text": "string"
+       },
+       "default": "'vertical'",
+       "description": "Informs screen reader and affects keyboard navigation.\nBy default 'vertical'"
+      },
+      {
+       "name": "selection-follows-focus",
+       "fieldName": "selectionFollowsFocus",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "When true, will synchronize activedescendant and selected element on\narrow key navigation.\nThis behavior can usually be seen on <select> on the Windows platform.\nNote that this behavior cannot be used when multiple-choice is true.\nSee: https://www.w3.org/TR/wai-aria-practices/#kbd_selection_follows_focus"
+      },
+      {
+       "name": "rotate-keyboard-navigation",
+       "fieldName": "rotateKeyboardNavigation",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Will give first option active state when navigated to the next option from\nlast option."
+      },
+      {
+       "name": "has-no-default-selected",
+       "fieldName": "hasNoDefaultSelected",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "When setting this to true, on initial render, no option will be selected.\nIt is advisable to override `_noSelectionTemplate` method in the select-invoker\nto render some kind of placeholder initially"
+      },
+      {
+       "name": "_noTypeAhead",
+       "fieldName": "_noTypeAhead",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "When false, a user can type on which the focus will jump to the matching option"
+      },
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "A Boolean attribute which, if present, indicates that the user should not be able to edit\nthe value of the input. The difference between disabled and readonly is that read-only\ncontrols can still function, whereas disabled controls generally do not function as\ncontrols until they are enabled.\n(From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly)"
+      },
+      {
+       "name": "label",
+       "fieldName": "label",
+       "type": {
+        "text": "string"
+       },
+       "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used."
+      },
+      {
+       "name": "label-sr-only",
+       "fieldName": "labelSrOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "The label will only be visible for srceen readers when true"
+      },
+      {
+       "name": "help-text",
+       "fieldName": "helpText",
+       "type": {
+        "text": "string"
+       },
+       "description": "The helpt text for the input node.\nWhen no light dom defined via [slot=help-text], this value will be used"
+      },
+      {
+       "name": "multiple-choice",
+       "fieldName": "multipleChoice",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "When false (default), modelValue and serializedValue will reflect the\ncurrently selected choice (usually a string). When true, modelValue will and\nserializedValue will be an array of strings."
+      },
+      {
+       "name": "_isFormOrFieldset",
+       "fieldName": "_isFormOrFieldset",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag that determines how \".formElements\" should behave.\nFor a regular fieldset (see LionFieldset) we expect \".formElements\"\nto be accessible as an object.\nIn case of a radio-group, a checkbox-group or a select/listbox,\nit should act like an array (see ChoiceGroupMixin).\nUsually, when false, we deal with a choice-group (radio-group, checkbox-group,\n(multi)select)"
+      },
+      {
+       "name": "focused",
+       "fieldName": "focused",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) is focused.\nReflects to attribute '[focused]' as a styling hook"
+      },
+      {
+       "name": "focused-visible",
+       "fieldName": "focusedVisible",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) matches ':focus-visible'\nReflects to attribute '[focused-visible]' as a styling hook\nSee: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"
+      },
+      {
+       "name": "autofocus",
+       "fieldName": "autofocus",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "touched",
+       "fieldName": "touched",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has focused and left(blurred) the field."
+      },
+      {
+       "name": "dirty",
+       "fieldName": "dirty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has changed the value of the field."
+      },
+      {
+       "name": "filled",
+       "fieldName": "filled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when the modelValue is non-empty (see _isEmpty in FormControlMixin)"
+      },
+      {
+       "name": "shows-feedback-for",
+       "fieldName": "showsFeedbackFor",
+       "type": {
+        "text": "ValidationType[]"
+       },
+       "default": "[]",
+       "description": "Based on outcome of feedbackCondition, this array decides what ValidationTypes should be\nshown in validationFeedback, based on meta data like interaction states.\n\nFor styling purposes, it reflects it `[shows-feedback-for=\"error warning\"]`"
+      },
+      {
+       "name": "is-pending",
+       "fieldName": "isPending",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag indicating whether async validation is pending.\nCreates attribute [is-pending] as a styling hook"
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      }
+     ],
+     "definedIn": "exports/define/lion-listbox.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-option",
+     "name": "LionOption",
+     "description": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option\nCan be a child of datalist/select, or role=\"listbox\"\n\nElement gets state supplied externally, reflects this to attributes,\nenabling SubClassers to style based on those states",
+     "attributes": [
+      {
+       "name": "active",
+       "fieldName": "active",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Boolean indicating whether or not this element is disabled."
+      },
+      {
+       "name": "checked",
+       "fieldName": "checked",
+       "type": {
+        "text": "boolean"
+       }
+      },
+      {
+       "name": "modelValue",
+       "fieldName": "modelValue",
+       "type": {
+        "text": "{value:string|any,checked:boolean}"
+       },
+       "default": "{ value: '', checked: false }",
+       "description": "Whereas 'normal' `.modelValue`s usually store a complex/typed version\nof a view value, choice inputs have a slightly different approach.\nIn order to remain their Single Source of Truth characteristic, choice inputs\nstore both the value and 'checkedness', in the format { value: 'x', checked: true }\nDifferent from the platform, this also allows to serialize the 'non checkedness',\nallowing to restore form state easily and inform the server about unchecked options."
+      },
+      {
+       "name": "choiceValue",
+       "fieldName": "choiceValue",
+       "type": {
+        "text": "string|any"
+       },
+       "description": "The value that will be registered to the modelValue of the parent ChoiceGroup. Recommended\nto be a string"
+      },
+      {
+       "name": "name",
+       "fieldName": "name",
+       "type": {
+        "text": "string"
+       },
+       "default": "''",
+       "description": "The name the element will be registered with to the .formElements collection\nof the parent. Also, it serves as the key of key/value pairs in\n modelValue/serializedValue objects"
+      },
+      {
+       "name": "allow-cross-root-registration",
+       "fieldName": "allowCrossRootRegistration",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "To encourage accessibility best practices, `form-element-register` events\ndo not pierce through shadow roots. This forces the developer to create form groups and fieldsets that automatically allow the creation of accessible relationships in the same dom tree.\nUse this option if you know what you're doing. It will then be possible to nest FormControls\ninside shadow dom. See https://lion.js.org/fundamentals/rationales/accessibility/#shadow-roots-and-accessibility"
+      }
+     ],
+     "definedIn": "exports/define/lion-option.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-options",
+     "name": "LionOptions",
+     "description": "LionOptions",
+     "attributes": [
+      {
+       "name": "tabindex",
+       "fieldName": "tabIndex",
+       "type": {
+        "text": "number"
+       },
+       "default": "0"
+      }
+     ],
+     "definedIn": "exports/define/lion-options.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-pagination",
+     "name": "LionPagination",
+     "description": "`LionPagination` is a class for custom Pagination element (`<lion-pagination>` web component).",
+     "attributes": [
+      {
+       "name": "current",
+       "fieldName": "current",
+       "type": {
+        "text": "number"
+       },
+       "default": "1"
+      },
+      {
+       "name": "count",
+       "fieldName": "count",
+       "type": {
+        "text": "number"
+       },
+       "default": "0"
+      }
+     ],
+     "definedIn": "exports/define/lion-pagination.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-progress-indicator",
+     "name": "LionProgressIndicator",
+     "attributes": [
+      {
+       "name": "value",
+       "fieldName": "value",
+       "type": {
+        "text": "number"
+       },
+       "default": "0"
+      },
+      {
+       "name": "min",
+       "fieldName": "min",
+       "type": {
+        "text": "number"
+       },
+       "default": "0"
+      },
+      {
+       "name": "max",
+       "fieldName": "max",
+       "type": {
+        "text": "number"
+       },
+       "default": "100"
+      },
+      {
+       "name": "aria-label",
+       "fieldName": "_ariaLabel",
+       "type": {
+        "text": "string"
+       },
+       "default": "''"
+      },
+      {
+       "name": "aria-labelledby",
+       "fieldName": "_ariaLabelledby",
+       "type": {
+        "text": "string"
+       },
+       "default": "''"
+      }
+     ],
+     "definedIn": "exports/define/lion-progress-indicator.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-radio-group",
+     "name": "LionRadioGroup",
+     "description": "LionRadioGroup: A wrapper around multiple radios.",
+     "attributes": [
+      {
+       "name": "multiple-choice",
+       "fieldName": "multipleChoice",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "When false (default), modelValue and serializedValue will reflect the\ncurrently selected choice (usually a string). When true, modelValue will and\nserializedValue will be an array of strings."
+      },
+      {
+       "name": "_isFormOrFieldset",
+       "fieldName": "_isFormOrFieldset",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag that determines how \".formElements\" should behave.\nFor a regular fieldset (see LionFieldset) we expect \".formElements\"\nto be accessible as an object.\nIn case of a radio-group, a checkbox-group or a select/listbox,\nit should act like an array (see ChoiceGroupMixin).\nUsually, when false, we deal with a choice-group (radio-group, checkbox-group,\n(multi)select)"
+      },
+      {
+       "name": "shows-feedback-for",
+       "fieldName": "showsFeedbackFor",
+       "type": {
+        "text": "ValidationType[]"
+       },
+       "default": "[]",
+       "description": "Based on outcome of feedbackCondition, this array decides what ValidationTypes should be\nshown in validationFeedback, based on meta data like interaction states.\n\nFor styling purposes, it reflects it `[shows-feedback-for=\"error warning\"]`"
+      },
+      {
+       "name": "is-pending",
+       "fieldName": "isPending",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag indicating whether async validation is pending.\nCreates attribute [is-pending] as a styling hook"
+      },
+      {
+       "name": "touched",
+       "fieldName": "touched",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has focused and left(blurred) the field."
+      },
+      {
+       "name": "dirty",
+       "fieldName": "dirty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has changed the value of the field."
+      },
+      {
+       "name": "filled",
+       "fieldName": "filled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when the modelValue is non-empty (see _isEmpty in FormControlMixin)"
+      },
+      {
+       "name": "submitted",
+       "fieldName": "submitted",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when parent form is submitted"
+      },
+      {
+       "name": "focused",
+       "fieldName": "focused",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when any of the children is focused."
+      },
+      {
+       "name": "prefilled",
+       "fieldName": "prefilled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when all of the children are prefilled (see InteractionStateMixin for more details.)"
+      },
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "A Boolean attribute which, if present, indicates that the user should not be able to edit\nthe value of the input. The difference between disabled and readonly is that read-only\ncontrols can still function, whereas disabled controls generally do not function as\ncontrols until they are enabled.\n(From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly)"
+      },
+      {
+       "name": "label",
+       "fieldName": "label",
+       "type": {
+        "text": "string"
+       },
+       "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used."
+      },
+      {
+       "name": "label-sr-only",
+       "fieldName": "labelSrOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "The label will only be visible for srceen readers when true"
+      },
+      {
+       "name": "help-text",
+       "fieldName": "helpText",
+       "type": {
+        "text": "string"
+       },
+       "description": "The helpt text for the input node.\nWhen no light dom defined via [slot=help-text], this value will be used"
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      }
+     ],
+     "definedIn": "exports/define/lion-radio-group.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-radio",
+     "name": "LionRadio",
+     "description": "Lion-radio can be used inside a lion-radio-group.\n\n<lion-radio-group name=\"radios\">\n  <label slot=\"label\">My Radio</label>\n  <lion-radio>\n    <label slot=\"label\">Male</label>\n  </lion-radio>\n  <lion-radio>\n    <label slot=\"label\">Female</label>\n  </lion-radio>\n</lion-radio-group>\n\nYou can preselect an option by setting marking an lion-radio checked.\n  Example:\n  <lion-radio checked>",
+     "attributes": [
+      {
+       "name": "checked",
+       "fieldName": "checked",
+       "type": {
+        "text": "boolean"
+       }
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Boolean indicating whether or not this element is disabled."
+      },
+      {
+       "name": "modelValue",
+       "fieldName": "modelValue",
+       "type": {
+        "text": "{value:string|any,checked:boolean}"
+       },
+       "default": "{ value: '', checked: false }",
+       "description": "Whereas 'normal' `.modelValue`s usually store a complex/typed version\nof a view value, choice inputs have a slightly different approach.\nIn order to remain their Single Source of Truth characteristic, choice inputs\nstore both the value and 'checkedness', in the format { value: 'x', checked: true }\nDifferent from the platform, this also allows to serialize the 'non checkedness',\nallowing to restore form state easily and inform the server about unchecked options."
+      },
+      {
+       "name": "choiceValue",
+       "fieldName": "choiceValue",
+       "type": {
+        "text": "string|any"
+       },
+       "description": "The value that will be registered to the modelValue of the parent ChoiceGroup. Recommended\nto be a string"
+      },
+      {
+       "name": "autocomplete",
+       "fieldName": "autocomplete",
+       "type": {
+        "text": "string | undefined"
+       },
+       "default": "undefined",
+       "description": "Delegates this property to input/textarea/select."
+      },
+      {
+       "name": "focused",
+       "fieldName": "focused",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) is focused.\nReflects to attribute '[focused]' as a styling hook"
+      },
+      {
+       "name": "focused-visible",
+       "fieldName": "focusedVisible",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) matches ':focus-visible'\nReflects to attribute '[focused-visible]' as a styling hook\nSee: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"
+      },
+      {
+       "name": "autofocus",
+       "fieldName": "autofocus",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "A Boolean attribute which, if present, indicates that the user should not be able to edit\nthe value of the input. The difference between disabled and readonly is that read-only\ncontrols can still function, whereas disabled controls generally do not function as\ncontrols until they are enabled.\n(From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly)"
+      },
+      {
+       "name": "label",
+       "fieldName": "label",
+       "type": {
+        "text": "string"
+       },
+       "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used."
+      },
+      {
+       "name": "label-sr-only",
+       "fieldName": "labelSrOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "The label will only be visible for srceen readers when true"
+      },
+      {
+       "name": "help-text",
+       "fieldName": "helpText",
+       "type": {
+        "text": "string"
+       },
+       "description": "The helpt text for the input node.\nWhen no light dom defined via [slot=help-text], this value will be used"
+      },
+      {
+       "name": "type",
+       "fieldName": "type",
+       "type": {
+        "text": "string"
+       },
+       "default": "'text'"
+      },
+      {
+       "name": "placeholder",
+       "fieldName": "placeholder",
+       "type": {
+        "text": "string"
+       },
+       "default": "''"
+      },
+      {
+       "name": "name",
+       "fieldName": "name",
+       "type": {
+        "text": "string"
+       },
+       "default": "''",
+       "description": "The name the element will be registered with to the .formElements collection\nof the parent. Also, it serves as the key of key/value pairs in\n modelValue/serializedValue objects"
+      },
+      {
+       "name": "allow-cross-root-registration",
+       "fieldName": "allowCrossRootRegistration",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "To encourage accessibility best practices, `form-element-register` events\ndo not pierce through shadow roots. This forces the developer to create form groups and fieldsets that automatically allow the creation of accessible relationships in the same dom tree.\nUse this option if you know what you're doing. It will then be possible to nest FormControls\ninside shadow dom. See https://lion.js.org/fundamentals/rationales/accessibility/#shadow-roots-and-accessibility"
+      },
+      {
+       "name": "touched",
+       "fieldName": "touched",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has focused and left(blurred) the field."
+      },
+      {
+       "name": "dirty",
+       "fieldName": "dirty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has changed the value of the field."
+      },
+      {
+       "name": "filled",
+       "fieldName": "filled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when the modelValue is non-empty (see _isEmpty in FormControlMixin)"
+      },
+      {
+       "name": "shows-feedback-for",
+       "fieldName": "showsFeedbackFor",
+       "type": {
+        "text": "ValidationType[]"
+       },
+       "default": "[]",
+       "description": "Based on outcome of feedbackCondition, this array decides what ValidationTypes should be\nshown in validationFeedback, based on meta data like interaction states.\n\nFor styling purposes, it reflects it `[shows-feedback-for=\"error warning\"]`"
+      },
+      {
+       "name": "is-pending",
+       "fieldName": "isPending",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag indicating whether async validation is pending.\nCreates attribute [is-pending] as a styling hook"
+      }
+     ],
+     "definedIn": "exports/define/lion-radio.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-field-with-select",
+     "name": "LionSelectRich",
+     "description": "LionSelectRich: wraps the <lion-listbox> element",
+     "attributes": [
+      {
+       "name": "navigate-within-invoker",
+       "fieldName": "navigateWithinInvoker",
+       "type": {
+        "text": "Boolean"
+       },
+       "default": "false",
+       "description": "When invoker has focus, up and down arrow keys changes active state of listbox,\nwithout opening overlay."
+      },
+      {
+       "name": "interaction-mode",
+       "fieldName": "interactionMode",
+       "type": {
+        "text": "'windows/linux'|'mac'|'auto'"
+       },
+       "default": "'auto'",
+       "description": "Aligns behavior for 'selectionFollowFocus' and 'navigateWithinInvoker' with\nplatform. When 'auto' (default), platform is automatically detected"
+      },
+      {
+       "name": "single-option",
+       "fieldName": "singleOption",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "orientation",
+       "fieldName": "orientation",
+       "type": {
+        "text": "string"
+       },
+       "default": "'vertical'",
+       "description": "Informs screen reader and affects keyboard navigation.\nBy default 'vertical'"
+      },
+      {
+       "name": "selection-follows-focus",
+       "fieldName": "selectionFollowsFocus",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "When true, will synchronize activedescendant and selected element on\narrow key navigation.\nThis behavior can usually be seen on <select> on the Windows platform.\nNote that this behavior cannot be used when multiple-choice is true.\nSee: https://www.w3.org/TR/wai-aria-practices/#kbd_selection_follows_focus"
+      },
+      {
+       "name": "rotate-keyboard-navigation",
+       "fieldName": "rotateKeyboardNavigation",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Will give first option active state when navigated to the next option from\nlast option."
+      },
+      {
+       "name": "has-no-default-selected",
+       "fieldName": "hasNoDefaultSelected",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "When setting this to true, on initial render, no option will be selected.\nIt is advisable to override `_noSelectionTemplate` method in the select-invoker\nto render some kind of placeholder initially"
+      },
+      {
+       "name": "_noTypeAhead",
+       "fieldName": "_noTypeAhead",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "When false, a user can type on which the focus will jump to the matching option"
+      },
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "A Boolean attribute which, if present, indicates that the user should not be able to edit\nthe value of the input. The difference between disabled and readonly is that read-only\ncontrols can still function, whereas disabled controls generally do not function as\ncontrols until they are enabled.\n(From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly)"
+      },
+      {
+       "name": "label",
+       "fieldName": "label",
+       "type": {
+        "text": "string"
+       },
+       "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used."
+      },
+      {
+       "name": "label-sr-only",
+       "fieldName": "labelSrOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "The label will only be visible for srceen readers when true"
+      },
+      {
+       "name": "help-text",
+       "fieldName": "helpText",
+       "type": {
+        "text": "string"
+       },
+       "description": "The helpt text for the input node.\nWhen no light dom defined via [slot=help-text], this value will be used"
+      },
+      {
+       "name": "multiple-choice",
+       "fieldName": "multipleChoice",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "When false (default), modelValue and serializedValue will reflect the\ncurrently selected choice (usually a string). When true, modelValue will and\nserializedValue will be an array of strings."
+      },
+      {
+       "name": "_isFormOrFieldset",
+       "fieldName": "_isFormOrFieldset",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag that determines how \".formElements\" should behave.\nFor a regular fieldset (see LionFieldset) we expect \".formElements\"\nto be accessible as an object.\nIn case of a radio-group, a checkbox-group or a select/listbox,\nit should act like an array (see ChoiceGroupMixin).\nUsually, when false, we deal with a choice-group (radio-group, checkbox-group,\n(multi)select)"
+      },
+      {
+       "name": "focused",
+       "fieldName": "focused",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) is focused.\nReflects to attribute '[focused]' as a styling hook"
+      },
+      {
+       "name": "focused-visible",
+       "fieldName": "focusedVisible",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) matches ':focus-visible'\nReflects to attribute '[focused-visible]' as a styling hook\nSee: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"
+      },
+      {
+       "name": "autofocus",
+       "fieldName": "autofocus",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "touched",
+       "fieldName": "touched",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has focused and left(blurred) the field."
+      },
+      {
+       "name": "dirty",
+       "fieldName": "dirty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has changed the value of the field."
+      },
+      {
+       "name": "filled",
+       "fieldName": "filled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when the modelValue is non-empty (see _isEmpty in FormControlMixin)"
+      },
+      {
+       "name": "shows-feedback-for",
+       "fieldName": "showsFeedbackFor",
+       "type": {
+        "text": "ValidationType[]"
+       },
+       "default": "[]",
+       "description": "Based on outcome of feedbackCondition, this array decides what ValidationTypes should be\nshown in validationFeedback, based on meta data like interaction states.\n\nFor styling purposes, it reflects it `[shows-feedback-for=\"error warning\"]`"
+      },
+      {
+       "name": "is-pending",
+       "fieldName": "isPending",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag indicating whether async validation is pending.\nCreates attribute [is-pending] as a styling hook"
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      }
+     ]
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-select-invoker",
+     "name": "LionSelectInvoker",
+     "description": "LionSelectInvoker: invoker button consuming a selected element",
+     "attributes": [
+      {
+       "name": "selectedElement",
+       "fieldName": "selectedElement",
+       "type": {
+        "text": "LionOption | null"
+       },
+       "default": "null",
+       "description": "The option element that is currently selected"
+      },
+      {
+       "name": "hostElement",
+       "fieldName": "hostElement",
+       "type": {
+        "text": "LionSelectRich | null"
+       },
+       "default": "null",
+       "description": "The LionSelectRich element this invoker is part of. Will be set on connectedCallback of\nLionSelectRich"
+      },
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "When the connected LionSelectRich instance is readOnly,\nthis should be reflected in the invoker as well"
+      },
+      {
+       "name": "single-option",
+       "fieldName": "singleOption",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "When the connected LionSelectRich instance has only one option,\nthis should be reflected in the invoker as well"
+      },
+      {
+       "name": "tabindex",
+       "fieldName": "tabIndex",
+       "type": {
+        "text": "number"
+       }
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "active",
+       "fieldName": "active",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "type",
+       "fieldName": "type",
+       "type": {
+        "text": "string"
+       },
+       "default": "'button'"
+      }
+     ],
+     "definedIn": "exports/define/lion-select-invoker.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-select",
+     "name": "LionSelect",
+     "description": "LionSelect: wraps the native HTML element select\n\n<lion-select>\n  <label slot=\"label\">My Input</label>\n  <select slot=\"input\">\n   <option value=\"top\">top</option>\n   <option value=\"bottom\">bottom</option>\n  </select>\n</lion-select>\n\nYou can preselect an option by setting the property modelValue.\n  Example:\n    <lion-select .modelValue=\"${'<value of option 2>'}\">\n\nIt extends LionField so it inherits required and disabled.\n\nThe option element needs to be a direct child of the select element.\n\nYou cannot use interactive elements inside the options. Avoid very long names to\nfacilitate the understandability and perceivability for screen reader users. Sets of options\nwhere each option name starts with the same word or phrase can also significantly degrade\nusability for keyboard and screen reader users.",
+     "attributes": [
+      {
+       "name": "autocomplete",
+       "fieldName": "autocomplete",
+       "type": {
+        "text": "string|undefined"
+       },
+       "default": "undefined",
+       "description": "Delegates autocomplete to select"
+      },
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "A Boolean attribute which, if present, indicates that the user should not be able to edit\nthe value of the input. The difference between disabled and readonly is that read-only\ncontrols can still function, whereas disabled controls generally do not function as\ncontrols until they are enabled.\n(From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly)"
+      },
+      {
+       "name": "label",
+       "fieldName": "label",
+       "type": {
+        "text": "string"
+       },
+       "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used."
+      },
+      {
+       "name": "label-sr-only",
+       "fieldName": "labelSrOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "The label will only be visible for srceen readers when true"
+      },
+      {
+       "name": "help-text",
+       "fieldName": "helpText",
+       "type": {
+        "text": "string"
+       },
+       "description": "The helpt text for the input node.\nWhen no light dom defined via [slot=help-text], this value will be used"
+      },
+      {
+       "name": "name",
+       "fieldName": "name",
+       "type": {
+        "text": "string"
+       },
+       "default": "''",
+       "description": "The name the element will be registered with to the .formElements collection\nof the parent. Also, it serves as the key of key/value pairs in\n modelValue/serializedValue objects"
+      },
+      {
+       "name": "allow-cross-root-registration",
+       "fieldName": "allowCrossRootRegistration",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "To encourage accessibility best practices, `form-element-register` events\ndo not pierce through shadow roots. This forces the developer to create form groups and fieldsets that automatically allow the creation of accessible relationships in the same dom tree.\nUse this option if you know what you're doing. It will then be possible to nest FormControls\ninside shadow dom. See https://lion.js.org/fundamentals/rationales/accessibility/#shadow-roots-and-accessibility"
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "touched",
+       "fieldName": "touched",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has focused and left(blurred) the field."
+      },
+      {
+       "name": "dirty",
+       "fieldName": "dirty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has changed the value of the field."
+      },
+      {
+       "name": "filled",
+       "fieldName": "filled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when the modelValue is non-empty (see _isEmpty in FormControlMixin)"
+      },
+      {
+       "name": "focused",
+       "fieldName": "focused",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) is focused.\nReflects to attribute '[focused]' as a styling hook"
+      },
+      {
+       "name": "focused-visible",
+       "fieldName": "focusedVisible",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) matches ':focus-visible'\nReflects to attribute '[focused-visible]' as a styling hook\nSee: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"
+      },
+      {
+       "name": "autofocus",
+       "fieldName": "autofocus",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "shows-feedback-for",
+       "fieldName": "showsFeedbackFor",
+       "type": {
+        "text": "ValidationType[]"
+       },
+       "default": "[]",
+       "description": "Based on outcome of feedbackCondition, this array decides what ValidationTypes should be\nshown in validationFeedback, based on meta data like interaction states.\n\nFor styling purposes, it reflects it `[shows-feedback-for=\"error warning\"]`"
+      },
+      {
+       "name": "is-pending",
+       "fieldName": "isPending",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag indicating whether async validation is pending.\nCreates attribute [is-pending] as a styling hook"
+      }
+     ],
+     "definedIn": "exports/define/lion-select.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-steps",
+     "name": "LionSteps",
+     "description": "`LionSteps` is a controller for a multi step system.",
+     "attributes": [
+      {
+       "name": "data",
+       "fieldName": "data",
+       "type": {
+        "text": "{[key: string]: ?}"
+       },
+       "default": "{}",
+       "description": "Storage for data gathered across different steps.\nData is passed into each step condition function as a first argument."
+      },
+      {
+       "name": "current",
+       "fieldName": "current",
+       "type": {
+        "text": "number"
+       },
+       "default": "0",
+       "description": "Number of the current entered step."
+      }
+     ],
+     "definedIn": "exports/define/lion-steps.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-step",
+     "name": "LionStep",
+     "description": "`LionStep` is one of many in a LionSteps Controller",
+     "attributes": [
+      {
+       "name": "status",
+       "fieldName": "status",
+       "type": {
+        "text": "string"
+       },
+       "default": "'untouched'",
+       "description": "Step status, one of: \"untouched\", \"entered\", \"left\", \"skipped\"."
+      },
+      {
+       "name": "invert-condition",
+       "fieldName": "invertCondition",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Allows to invert condition function result."
+      },
+      {
+       "name": "forward-only",
+       "fieldName": "forwardOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Allows transition to step only in forward direction. Skips it if transitioned back.\nMay be useful if the step is only showing some messages and does data loading and\nthen makes transition to next step automatically."
+      },
+      {
+       "name": "initial-step",
+       "fieldName": "initialStep",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "If set this step will be the initially enabled step\nThere should be only ONE intial step in each steps"
+      }
+     ],
+     "definedIn": "exports/define/lion-step.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-switch",
+     "name": "LionSwitch",
+     "attributes": [
+      {
+       "name": "checked",
+       "fieldName": "checked",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Boolean indicating whether or not this element is disabled."
+      },
+      {
+       "name": "modelValue",
+       "fieldName": "modelValue",
+       "type": {
+        "text": "{value:string|any,checked:boolean}"
+       },
+       "default": "{ value: '', checked: false }",
+       "description": "Whereas 'normal' `.modelValue`s usually store a complex/typed version\nof a view value, choice inputs have a slightly different approach.\nIn order to remain their Single Source of Truth characteristic, choice inputs\nstore both the value and 'checkedness', in the format { value: 'x', checked: true }\nDifferent from the platform, this also allows to serialize the 'non checkedness',\nallowing to restore form state easily and inform the server about unchecked options."
+      },
+      {
+       "name": "choiceValue",
+       "fieldName": "choiceValue",
+       "type": {
+        "text": "string|any"
+       },
+       "description": "The value that will be registered to the modelValue of the parent ChoiceGroup. Recommended\nto be a string"
+      },
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "A Boolean attribute which, if present, indicates that the user should not be able to edit\nthe value of the input. The difference between disabled and readonly is that read-only\ncontrols can still function, whereas disabled controls generally do not function as\ncontrols until they are enabled.\n(From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly)"
+      },
+      {
+       "name": "label",
+       "fieldName": "label",
+       "type": {
+        "text": "string"
+       },
+       "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used."
+      },
+      {
+       "name": "label-sr-only",
+       "fieldName": "labelSrOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "The label will only be visible for srceen readers when true"
+      },
+      {
+       "name": "help-text",
+       "fieldName": "helpText",
+       "type": {
+        "text": "string"
+       },
+       "description": "The helpt text for the input node.\nWhen no light dom defined via [slot=help-text], this value will be used"
+      },
+      {
+       "name": "name",
+       "fieldName": "name",
+       "type": {
+        "text": "string"
+       },
+       "default": "''",
+       "description": "The name the element will be registered with to the .formElements collection\nof the parent. Also, it serves as the key of key/value pairs in\n modelValue/serializedValue objects"
+      },
+      {
+       "name": "allow-cross-root-registration",
+       "fieldName": "allowCrossRootRegistration",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "To encourage accessibility best practices, `form-element-register` events\ndo not pierce through shadow roots. This forces the developer to create form groups and fieldsets that automatically allow the creation of accessible relationships in the same dom tree.\nUse this option if you know what you're doing. It will then be possible to nest FormControls\ninside shadow dom. See https://lion.js.org/fundamentals/rationales/accessibility/#shadow-roots-and-accessibility"
+      },
+      {
+       "name": "touched",
+       "fieldName": "touched",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has focused and left(blurred) the field."
+      },
+      {
+       "name": "dirty",
+       "fieldName": "dirty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has changed the value of the field."
+      },
+      {
+       "name": "filled",
+       "fieldName": "filled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when the modelValue is non-empty (see _isEmpty in FormControlMixin)"
+      },
+      {
+       "name": "focused",
+       "fieldName": "focused",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) is focused.\nReflects to attribute '[focused]' as a styling hook"
+      },
+      {
+       "name": "focused-visible",
+       "fieldName": "focusedVisible",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) matches ':focus-visible'\nReflects to attribute '[focused-visible]' as a styling hook\nSee: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"
+      },
+      {
+       "name": "autofocus",
+       "fieldName": "autofocus",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "shows-feedback-for",
+       "fieldName": "showsFeedbackFor",
+       "type": {
+        "text": "ValidationType[]"
+       },
+       "default": "[]",
+       "description": "Based on outcome of feedbackCondition, this array decides what ValidationTypes should be\nshown in validationFeedback, based on meta data like interaction states.\n\nFor styling purposes, it reflects it `[shows-feedback-for=\"error warning\"]`"
+      },
+      {
+       "name": "is-pending",
+       "fieldName": "isPending",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag indicating whether async validation is pending.\nCreates attribute [is-pending] as a styling hook"
+      }
+     ],
+     "definedIn": "exports/define/lion-switch.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-switch-button",
+     "name": "LionSwitchButton",
+     "description": "`LionSwitchButton` is a custom switch button component. It's a private component used within LionSwitch",
+     "attributes": [
+      {
+       "name": "checked",
+       "fieldName": "checked",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "tabindex",
+       "fieldName": "tabIndex",
+       "type": {
+        "text": "number"
+       }
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      }
+     ],
+     "definedIn": "exports/define/lion-switch-button.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-tabs",
+     "name": "LionTabs",
+     "description": "LionTabs: A tabbed interface component",
+     "attributes": [
+      {
+       "name": "selected-index",
+       "fieldName": "selectedIndex",
+       "type": {
+        "text": "number"
+       },
+       "default": "0",
+       "description": "An index number of the selected tab"
+      }
+     ],
+     "slots": [
+      {
+       "description": "The tab elements for the tabs",
+       "name": "tab"
+      },
+      {
+       "description": "The panel elements for the tabs",
+       "name": "panel"
+      }
+     ],
+     "definedIn": "exports/define/lion-tabs.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-textarea",
+     "name": "LionTextarea",
+     "description": "LionTextarea: extension of lion-field with native input element in place and user friendly API",
+     "attributes": [
+      {
+       "name": "max-rows",
+       "fieldName": "maxRows",
+       "type": {
+        "text": "number"
+       },
+       "default": "6"
+      },
+      {
+       "name": "rows",
+       "fieldName": "rows",
+       "type": {
+        "text": "number"
+       },
+       "default": "2"
+      },
+      {
+       "name": "readonly",
+       "fieldName": "readOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "A Boolean attribute which, if present, indicates that the user should not be able to edit\nthe value of the input. The difference between disabled and readonly is that read-only\ncontrols can still function, whereas disabled controls generally do not function as\ncontrols until they are enabled.\n(From: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly)"
+      },
+      {
+       "name": "placeholder",
+       "fieldName": "placeholder",
+       "type": {
+        "text": "string"
+       },
+       "default": "''"
+      },
+      {
+       "name": "autocomplete",
+       "fieldName": "autocomplete",
+       "type": {
+        "text": "string | undefined"
+       },
+       "default": "undefined",
+       "description": "Delegates this property to input/textarea/select."
+      },
+      {
+       "name": "focused",
+       "fieldName": "focused",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) is focused.\nReflects to attribute '[focused]' as a styling hook"
+      },
+      {
+       "name": "focused-visible",
+       "fieldName": "focusedVisible",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Whether the focusable element within (`._focusableNode`) matches ':focus-visible'\nReflects to attribute '[focused-visible]' as a styling hook\nSee: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"
+      },
+      {
+       "name": "autofocus",
+       "fieldName": "autofocus",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "label",
+       "fieldName": "label",
+       "type": {
+        "text": "string"
+       },
+       "description": "The label text for the input node.\nWhen no light dom defined via [slot=label], this value will be used."
+      },
+      {
+       "name": "label-sr-only",
+       "fieldName": "labelSrOnly",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "The label will only be visible for srceen readers when true"
+      },
+      {
+       "name": "help-text",
+       "fieldName": "helpText",
+       "type": {
+        "text": "string"
+       },
+       "description": "The helpt text for the input node.\nWhen no light dom defined via [slot=help-text], this value will be used"
+      },
+      {
+       "name": "name",
+       "fieldName": "name",
+       "type": {
+        "text": "string"
+       },
+       "default": "''",
+       "description": "The name the element will be registered with to the .formElements collection\nof the parent. Also, it serves as the key of key/value pairs in\n modelValue/serializedValue objects"
+      },
+      {
+       "name": "allow-cross-root-registration",
+       "fieldName": "allowCrossRootRegistration",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "To encourage accessibility best practices, `form-element-register` events\ndo not pierce through shadow roots. This forces the developer to create form groups and fieldsets that automatically allow the creation of accessible relationships in the same dom tree.\nUse this option if you know what you're doing. It will then be possible to nest FormControls\ninside shadow dom. See https://lion.js.org/fundamentals/rationales/accessibility/#shadow-roots-and-accessibility"
+      },
+      {
+       "name": "disabled",
+       "fieldName": "disabled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false"
+      },
+      {
+       "name": "touched",
+       "fieldName": "touched",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has focused and left(blurred) the field."
+      },
+      {
+       "name": "dirty",
+       "fieldName": "dirty",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when user has changed the value of the field."
+      },
+      {
+       "name": "filled",
+       "fieldName": "filled",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "True when the modelValue is non-empty (see _isEmpty in FormControlMixin)"
+      },
+      {
+       "name": "shows-feedback-for",
+       "fieldName": "showsFeedbackFor",
+       "type": {
+        "text": "ValidationType[]"
+       },
+       "default": "[]",
+       "description": "Based on outcome of feedbackCondition, this array decides what ValidationTypes should be\nshown in validationFeedback, based on meta data like interaction states.\n\nFor styling purposes, it reflects it `[shows-feedback-for=\"error warning\"]`"
+      },
+      {
+       "name": "is-pending",
+       "fieldName": "isPending",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "false",
+       "description": "Flag indicating whether async validation is pending.\nCreates attribute [is-pending] as a styling hook"
+      }
+     ],
+     "definedIn": "exports/define/lion-textarea.js"
+    },
+    {
+     "kind": "class",
+     "customElement": true,
+     "tagName": "lion-tooltip",
+     "name": "LionTooltip",
+     "attributes": [
+      {
+       "name": "invoker-relation",
+       "fieldName": "invokerRelation",
+       "type": {
+        "text": "'label'|'description'"
+       },
+       "default": "'description'",
+       "description": "Decides whether the tooltip invoker text should be considered a description\n(sets aria-describedby) or a label (sets aria-labelledby)."
+      },
+      {
+       "name": "has-arrow",
+       "fieldName": "hasArrow",
+       "type": {
+        "text": "boolean"
+       },
+       "default": "true"
+      }
+     ],
+     "definedIn": "exports/define/lion-tooltip.js"
+    }
+   ]
+  }
+ ]
+}
