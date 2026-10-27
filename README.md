@@ -1,4 +1,4 @@
-# Screen Builder
+# Mobile Webview Builder
 
 A drag-and-drop builder for the simple, uniform mobile webview screens that live inside the app.
 Compose screens from your Lit component library, reuse pieces as blocks, keep every screen on one
@@ -8,10 +8,10 @@ This is a local prototype using public Lit/Lion packages and sample data. The in
 adapter is disabled until you configure it. No private ING packages, backend account, API key,
 or native mobile app are required to run the included examples.
 
-## DemoJam presentation
+## Presentation
 
-See [the presentation guide](demo/README.md) for the full ten-minute read-aloud script,
-live demo cues, and a short offline workflow animation.
+See [the short PDF presentation](output/pdf/mobile-webview-builder.pdf) for an overview of
+reusable tooling, consistent screens, and customization in Mobile Webview Builder.
 
 ## Download and run locally
 
@@ -100,7 +100,7 @@ Use the URL printed in the terminal. **Use `npm run dev` for the full demo**: fi
 
 - Development mode saves changes to `builder-data/project.json`. This repository includes a sample
   project; edits change that file locally. Download project JSON from Export to keep a separate backup.
-- Dependencies, build output, generated exports, local AI settings, and environment files are excluded from Git.
+- Dependencies, build output, generated exports, local settings, and environment files are excluded from Git.
 - If port 5180 is occupied, stop the other local server or run
   `npm run dev -- --host 127.0.0.1 --strictPort --port 5181`, then open http://127.0.0.1:5181.
 - If a remote library fails to load, check your internet connection and its URL in **Libraries**.
