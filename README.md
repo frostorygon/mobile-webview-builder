@@ -8,6 +8,11 @@ This is a local prototype using public Lit/Lion packages and sample data. The in
 adapter is disabled until you configure it. No private ING packages, backend account, API key,
 or native mobile app are required to run the included examples.
 
+## DemoJam presentation
+
+See [the presentation guide](demo/README.md) for the full ten-minute read-aloud script,
+live demo cues, and a short offline workflow animation.
+
 ## Download and run locally
 
 ### Requirements

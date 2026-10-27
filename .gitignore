@@ -9,3 +9,5 @@ generated/
 .DS_Store
 Thumbs.db
 mobile-screen-reference.jpg
+__pycache__/
+*.py[cod]
