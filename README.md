@@ -36,7 +36,7 @@ reusable tooling, consistent screens, and customization in Mobile Webview Builde
   if you already use a compatible Node version manager.
 - **Git** for cloning, or use GitHub's **Code → Download ZIP** instead.
 - A current desktop browser and internet access to install dependencies.
-- Access to the GitHub repository. It is private, so sign in with an authorized account before downloading.
+- The repository is public. No GitHub sign-in is required to clone it or download the ZIP.
 
 Check your installation:
 
@@ -59,7 +59,7 @@ Run these commands from the folder containing `package.json`.
 
 ### Option 2: download a ZIP
 
-1. Open [the repository](https://github.com/frostorygon/mobile-webview-builder) while signed in.
+1. Open [the repository](https://github.com/frostorygon/mobile-webview-builder).
 2. Select **Code → Download ZIP**, then extract the ZIP completely.
 3. Open a terminal in the extracted folder containing `package.json`.
 4. Run:
