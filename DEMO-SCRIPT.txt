@@ -1,0 +1,166 @@
+DEMOJAM SCRIPT: TOOLING AND AUTOMATION WITH AI
+
+Approximately 10 minutes, including the demos.
+Read the paragraphs aloud. Lines in square brackets are demo actions.
+
+0:00-1:30 | How it started
+
+Hello everyone. Today I'm going to share how I've been using AI to build tools and automate parts of development.
+
+This actually started while I was working on my game.
+
+I wanted a lot of things to be customizable. The environment, the sky, the characters, even small details like how the eyes looked.
+
+And because I was still exploring, I kept changing my mind.
+
+Sometimes I wanted a different atmosphere. Sometimes I wanted to compare a few visual styles. Sometimes I could picture what I wanted, but couldn't quite explain it in words.
+
+Things like "make it softer" or "make it feel more like nighttime" leave a lot open to interpretation.
+
+I also didn't want to start from scratch every time I wanted to try something different.
+
+After a while, I noticed that many of my requests were variations of the same thing. I kept changing the same properties.
+
+So I started using AI to build little tools around those properties.
+
+I wanted controls I could move, presets I could compare, and a way to keep the versions I liked.
+
+Let me show you what I mean.
+
+
+1:30-3:20 | The game tools
+
+[Open Sky Studio. Show Afterglow, switch to Moonlit, then hide the interface briefly.]
+
+This is one of the tools from my game project.
+
+Here, I can explore different sky settings and switch between looks.
+
+I can start with a preset, then adjust the colors and atmosphere while looking at the result.
+
+That makes experimenting much more direct. I can see whether a change works, keep adjusting it, and compare it with another version.
+
+The tool gives me a way to explore ideas that would be difficult to describe precisely in a prompt.
+
+[Open the eye editor. Switch between Neon Rose and Aurora Split. Adjust gaze or blink.]
+
+This is another example, focused on character eyes.
+
+The same idea applies here. There are properties I want to experiment with repeatedly, so I've put them behind controls.
+
+I can try a preset, change the appearance, and see how it looks on the character.
+
+These are small tools around specific parts of the game I'm exploring.
+
+What I liked was that each tool stayed useful after the initial build. The next time I wanted a variation, I already had somewhere to start.
+
+
+3:20-4:20 | The connection to work
+
+At first, I thought of these as tools for my personal project.
+
+Then I looked at what we do at work and recognized a similar pattern.
+
+We also build things that repeat.
+
+We have review screens, confirmation screens, forms, and verification steps. The content changes, but many of the layout and styling decisions are familiar.
+
+We already have reusable components. But we still spend time putting them together, configuring them, and checking that the result follows the same patterns.
+
+That made me interested in bringing the same approach into that workflow.
+
+If we already understand the parts that repeat, we can make those parts easier to assemble and customize.
+
+That led to this early attempt.
+
+
+4:20-5:30 | Introduce Mobile Webview Builder
+
+[Open Mobile Webview Builder with Transfer review selected.]
+
+This is Mobile Webview Builder.
+
+It's an early prototype using public components and sample screens. The idea is to explore how a visual tool could work around the component library we already use.
+
+On the left, I have the components and the screen's layers.
+
+In the middle, I can see the screen I'm building.
+
+On the right, I can edit the properties.
+
+The goal is to give common work a consistent starting point.
+
+For a familiar screen, I can assemble the pieces, change the content, adjust the layout, and preview the result.
+
+And when something needs custom behavior, there is still a place for a developer to code and register a custom component.
+
+
+5:30-7:30 | Show the useful parts
+
+[Select Confirm transfer. Show "On tap, go to." Enter Preview, click Confirm transfer, then Done.]
+
+Here's a simple flow.
+
+This button points to the confirmation screen. In preview, I can click through it and return.
+
+These are sample screens with simulated navigation, but this already gives us something concrete to discuss and review.
+
+[Return to Design. Show the Help link on Transfer sent and Verify code.]
+
+Now, this help link appears on two screens.
+
+It's a shared block, so both screens are using the same composition.
+
+[Open Edit block for Help link. Change its label to "Need help? Contact us." Show both screens.]
+
+I can change it here, and both linked instances pick up that change.
+
+That's where the consistency benefit becomes visible. A shared decision has a shared place to live.
+
+Individual instances can still have intentional overrides when they need to differ.
+
+[Open Export and show the available tabs.]
+
+Finally, I can export the result as Lit components, HTML, the theme, or project JSON.
+
+The project data lets me keep and reuse the configuration. The code export gives me something I can continue working with in development.
+
+
+7:30-9:10 | Why build tooling around this?
+
+For me, the value comes down to three things.
+
+First, consistency.
+
+When screens use shared components, blocks, and theme rules, there are fewer decisions to repeat independently. A common pattern becomes easier to preserve.
+
+Second, customization.
+
+Consistency doesn't require every feature to look identical. We can make the intended variations explicit: content, layout, component properties, and custom behavior.
+
+That gives people room to change what matters while keeping the common foundation.
+
+Third, repeatability.
+
+Once a useful configuration exists, I can save it, reuse it, and build the next variation from it.
+
+That was what I wanted in my game, and it's the same opportunity I see in our development work.
+
+There is a cost, of course. Someone still has to maintain the tool, the component library, and the export behavior.
+
+So I'd start with a small, repeated task that we understand well, then expand based on actual use.
+
+
+9:10-10:00 | Close
+
+What started as a way to experiment with my game gave me a different way to think about development.
+
+When I keep describing the same kind of change, that can be a sign that a useful control, preset, or reusable component is missing.
+
+AI helped me explore building those tools. The tools then gave me a repeatable way to make and compare changes myself.
+
+That's the idea I wanted to share today.
+
+Think about one task you keep rebuilding, reconfiguring, or explaining. There might be a small tool worth making around it.
+
+Thank you.
